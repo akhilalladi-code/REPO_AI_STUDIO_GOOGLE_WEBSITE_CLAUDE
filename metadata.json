@@ -1,0 +1,6 @@
+{
+  "name": "Claude Code at ₹0 — Complete Handbook",
+  "description": "Production technical documentation platform for Claude Code at ₹0: The Complete AI Coding Agent Handbook, covering zero-cost architectures, local models, open-source alternatives, and deployment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

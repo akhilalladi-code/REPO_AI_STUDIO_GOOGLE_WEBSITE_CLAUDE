@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@layer base {
+  :root, .dark {
+    --bg-page: #101211;
+    --bg-surface: #161817;
+    --bg-card: #1B1E1C;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #949B95;
+    --border-subtle: #262927;
+    --border-medium: #353B37;
+    --accent: #1D9B71;
+    --accent-hover: #22B282;
+    --accent-light: #0D2B20;
+    --code-bg: #141715;
+    --code-border: #282D2A;
+    --code-text: #E5E7EB;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-secondary);
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Default headings to var(--text-primary) */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 700;
+  }
+
+  /* Prose, lists, definition items default to var(--text-secondary) */
+  p, li, dd, dt, blockquote {
+    color: var(--text-secondary);
+  }
+
+  /* Bold emphasis defaults to crisp primary white */
+  strong, b {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* Form labels, captions default to secondary */
+  label, legend, caption {
+    color: var(--text-secondary);
+  }
+
+  /* Form inputs, select boxes inherit primary text */
+  input, textarea, select {
+    color: var(--text-primary);
+  }
+
+  /* Secondary footnotes, figcaptions default to muted */
+  small, figcaption {
+    color: var(--text-muted);
+  }
+
+  code, pre, kbd {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  /* Custom smooth dark scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(120, 126, 121, 0.3);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 126, 121, 0.5);
+  }
+}
+
+@layer utilities {
+  .text-theme-primary {
+    color: var(--text-primary) !important;
+  }
+  .text-theme-secondary {
+    color: var(--text-secondary) !important;
+  }
+  .text-theme-muted {
+    color: var(--text-muted) !important;
+  }
+  .bg-theme-page {
+    background-color: var(--bg-page) !important;
+  }
+  .bg-theme-surface {
+    background-color: var(--bg-surface) !important;
+  }
+  .bg-theme-card {
+    background-color: var(--bg-card) !important;
+  }
+  .border-theme-subtle {
+    border-color: var(--border-subtle) !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #101211 !important;
+    color: #F8FAFC !important;
+  }
+}
