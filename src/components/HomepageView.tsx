@@ -22,7 +22,6 @@ import {
   Smartphone,
   Copy,
   Check,
-  Rocket,
   Code2,
   FileText,
   Workflow,
@@ -35,7 +34,6 @@ interface HomepageViewProps {
   onNavigateChapter: (slug: string) => void;
   onOpenSearch: () => void;
   onOpenPdfViewer: () => void;
-  onOpenDeploy: () => void;
   onSelectTab: (tab: any) => void;
 }
 
@@ -233,7 +231,6 @@ export const HomepageView: React.FC<HomepageViewProps> = ({
   onNavigateChapter,
   onOpenSearch,
   onOpenPdfViewer,
-  onOpenDeploy,
   onSelectTab,
 }) => {
   const [activeArch, setActiveArch] = useState<'pathA' | 'pathB' | 'pathC1' | 'pathC2'>('pathA');
@@ -356,15 +353,6 @@ curl -fsSL https://raw.githubusercontent.com/gtbuchanan/claude-code-termux/main/
               >
                 <Wrench className="w-4 h-4 text-emerald-400" />
                 <span>Interactive Labs (4 Apps)</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={onOpenDeploy}
-                className="flex items-center gap-2 px-5 py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-neutral-200 hover:text-white border border-neutral-700/80 font-medium text-sm transition-colors cursor-pointer"
-              >
-                <Rocket className="w-4 h-4 text-emerald-400" />
-                <span>Deploy Live App (₹0)</span>
               </button>
 
               <button

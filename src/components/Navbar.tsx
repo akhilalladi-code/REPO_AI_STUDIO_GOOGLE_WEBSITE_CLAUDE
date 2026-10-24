@@ -8,7 +8,6 @@ import {
   Home,
   Search,
   Menu,
-  FileDown,
   BookOpen,
   Sparkles,
   Terminal,
@@ -16,7 +15,6 @@ import {
   Award,
   Wrench,
   Cpu,
-  Rocket,
 } from 'lucide-react';
 
 export type MainNavTab =
@@ -33,8 +31,6 @@ interface NavbarProps {
   activeTab: MainNavTab;
   onSelectTab: (tab: MainNavTab) => void;
   onOpenSearch: () => void;
-  onOpenPdfViewer: () => void;
-  onOpenDeploy: () => void;
   onToggleMobileMenu: () => void;
 }
 
@@ -42,8 +38,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   onSelectTab,
   onOpenSearch,
-  onOpenPdfViewer,
-  onOpenDeploy,
   onToggleMobileMenu,
 }) => {
   return (
@@ -179,7 +173,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
         </nav>
 
-        {/* Right Search, Deploy, PDF & Theme Controls */}
+        {/* Right Search Control */}
         <div className="flex items-center gap-2">
           {/* Quick Search Trigger */}
           <button
@@ -194,29 +188,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               ⌘K
             </kbd>
           </button>
-
-          {/* 1-Click Deploy & Share */}
-          <button
-            type="button"
-            onClick={onOpenDeploy}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
-            title="Deploy your app live to a shareable URL in seconds"
-          >
-            <Rocket className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">Deploy / Share</span>
-          </button>
-
-          {/* Original PDF Action */}
-          <button
-            type="button"
-            onClick={onOpenPdfViewer}
-            className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 text-xs font-medium cursor-pointer transition-colors"
-            title="View or download the original 120-page PDF Handbook (6.8 MB)"
-          >
-            <FileDown className="w-3.5 h-3.5" />
-            <span className="hidden lg:inline">Source PDF</span>
-          </button>
-
         </div>
       </div>
     </header>

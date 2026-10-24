@@ -13,12 +13,12 @@ import { OnThisPageToc } from './components/OnThisPageToc';
 import { HomepageView } from './components/HomepageView';
 import { SearchModal } from './components/SearchModal';
 import { PdfViewerModal } from './components/PdfViewerModal';
-import { DeployModal } from './components/DeployModal';
 import { InteractiveProjects } from './components/InteractiveProjects';
 import { TroubleshootingWizard } from './components/TroubleshootingWizard';
 import { PromptLibraryView } from './components/PromptLibraryView';
 import { ModelMatrixView } from './components/ModelMatrixView';
 import { CommandRefView } from './components/CommandRefView';
+import { ContentCompletenessReport } from './components/ContentCompletenessReport';
 import { Home, ArrowLeft } from 'lucide-react';
 
 const BackToHomeBar: React.FC<{ title: string; subtitle?: string; onHome: () => void }> = ({
@@ -67,7 +67,6 @@ export default function App() {
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
-  const [isDeployModalOpen, setIsDeployModalOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Ensure dark theme is permanently enabled
@@ -188,8 +187,6 @@ export default function App() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenPdfViewer={() => setIsPdfModalOpen(true)}
-        onOpenDeploy={() => setIsDeployModalOpen(true)}
         onToggleMobileMenu={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
       />
 
@@ -209,7 +206,6 @@ export default function App() {
                 setActiveTab(tab as MainNavTab);
                 window.location.hash = tab;
               }}
-              onOpenDeploy={() => setIsDeployModalOpen(true)}
             />
 
             <main className="flex-1 min-w-0 px-4 sm:px-8 py-8">
@@ -249,7 +245,6 @@ export default function App() {
               onNavigateChapter={handleNavigateChapter}
               onOpenSearch={() => setIsSearchOpen(true)}
               onOpenPdfViewer={() => setIsPdfModalOpen(true)}
-              onOpenDeploy={() => setIsDeployModalOpen(true)}
               onSelectTab={(tab) => {
                 setActiveTab(tab);
                 window.location.hash = tab;
@@ -374,12 +369,6 @@ export default function App() {
       <PdfViewerModal
         isOpen={isPdfModalOpen}
         onClose={() => setIsPdfModalOpen(false)}
-      />
-
-      {/* 1-Click Deploy & Share Modal */}
-      <DeployModal
-        isOpen={isDeployModalOpen}
-        onClose={() => setIsDeployModalOpen(false)}
       />
     </div>
   );

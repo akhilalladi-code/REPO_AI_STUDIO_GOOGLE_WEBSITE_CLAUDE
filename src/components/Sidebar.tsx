@@ -19,7 +19,6 @@ import {
   Layers,
   Wrench,
   Workflow,
-  Rocket,
   Cpu,
 } from 'lucide-react';
 
@@ -31,7 +30,6 @@ interface SidebarProps {
   isOpenMobile: boolean;
   onCloseMobile: () => void;
   onSelectTab?: (tab: string) => void;
-  onOpenDeploy?: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -42,7 +40,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isOpenMobile,
   onCloseMobile,
   onSelectTab,
-  onOpenDeploy,
 }) => {
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({
     'Part V: Appendices & Reference': false,
@@ -177,19 +174,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <span>Audit (100%)</span>
             </button>
           </div>
-          {onOpenDeploy && (
-            <button
-              type="button"
-              onClick={() => {
-                onOpenDeploy();
-                onCloseMobile();
-              }}
-              className="w-full mt-1 py-1.5 px-2 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-semibold flex items-center justify-center gap-1.5 cursor-pointer"
-            >
-              <Rocket className="w-3.5 h-3.5" />
-              <span>1-Click Deploy Live</span>
-            </button>
-          )}
         </div>
       )}
 
