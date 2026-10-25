@@ -63,14 +63,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-xs group-hover:bg-emerald-500 transition-colors shrink-0">
               ₹0
             </div>
-            <div className="shrink-0 flex flex-col justify-center">
-              <div className="font-bold text-sm sm:text-base text-neutral-100 tracking-tight leading-none whitespace-nowrap group-hover:text-emerald-400 transition-colors">
-                Claude Code at ₹0
-              </div>
-              <div className="text-[10px] sm:text-[11px] text-neutral-400 font-mono mt-1 leading-none whitespace-nowrap">
-                The AI Coding Agent Handbook <span className="hidden sm:inline">&bull; Complete Reference</span>
-              </div>
-            </div>
+            <span className="font-bold text-sm sm:text-base text-neutral-100 tracking-tight whitespace-nowrap group-hover:text-emerald-400 transition-colors">
+              Claude Code at ₹0
+            </span>
           </button>
         </div>
 
