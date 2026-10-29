@@ -21,7 +21,7 @@
   body {
     background-color: var(--bg-page);
     color: var(--text-secondary);
-    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Poppins", "Noto Sans Devanagari", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -60,8 +60,8 @@
     color: var(--text-muted);
   }
 
-  code, pre, kbd {
-    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  code, pre, kbd, .font-mono {
+    font-family: "JetBrains Mono", "Noto Sans Devanagari", "Poppins", system-ui, ui-monospace, SFMono-Regular, monospace;
   }
 
   /* Custom smooth dark scrollbars */
