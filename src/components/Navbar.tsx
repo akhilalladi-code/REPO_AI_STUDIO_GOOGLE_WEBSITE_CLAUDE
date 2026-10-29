@@ -12,9 +12,9 @@ import {
   Sparkles,
   Terminal,
   AlertTriangle,
-  Award,
   Wrench,
   Cpu,
+  HelpCircle,
 } from 'lucide-react';
 
 export type MainNavTab =
@@ -25,7 +25,7 @@ export type MainNavTab =
   | 'prompts'
   | 'models'
   | 'commands'
-  | 'audit';
+  | 'faqs';
 
 interface NavbarProps {
   activeTab: MainNavTab;
@@ -41,10 +41,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleMobileMenu,
 }) => {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-neutral-800 bg-[#101211]/90 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        {/* Left Brand - Returns to Home */}
-        <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+    <header className="sticky top-0 z-40 w-full border-b border-neutral-800 bg-[#101211]/95 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6">
+        {/* Left Brand - Generous gap & divider before Home button */}
+        <div className="flex items-center gap-3 shrink-0 mr-4 sm:mr-8 xl:mr-12 pr-4 sm:pr-6 xl:pr-8 border-r border-neutral-800/80">
           <button
             type="button"
             onClick={onToggleMobileMenu}
@@ -57,26 +57,26 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={() => onSelectTab('home')}
-            className="flex items-center gap-2.5 text-left cursor-pointer group shrink-0 whitespace-nowrap"
-            title="Return to Claude Code ₹0 Homepage"
+            className="flex items-center gap-3 text-left cursor-pointer group shrink-0 whitespace-nowrap"
+            title="Return to Claude Code at ₹0 Homepage"
           >
-            <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-xs group-hover:bg-emerald-500 transition-colors shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-xs group-hover:bg-emerald-500 transition-colors shrink-0 font-sans">
               ₹0
             </div>
             <span className="font-bold text-sm sm:text-base text-neutral-100 tracking-tight whitespace-nowrap group-hover:text-emerald-400 transition-colors">
-              Claude Code at ₹0
+              Claude Code at <span className="font-sans">₹</span>0
             </span>
           </button>
         </div>
 
         {/* Center Primary Nav Tabs (Desktop) */}
-        <nav className="hidden xl:flex items-center gap-1 text-xs font-medium shrink-0" aria-label="Main navigation">
+        <nav className="hidden xl:flex items-center gap-1.5 text-xs font-medium flex-1" aria-label="Main navigation">
           <button
             onClick={() => onSelectTab('home')}
-            className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'home'
-                ? 'bg-neutral-800 text-emerald-300 font-semibold shadow-xs'
-                : 'text-neutral-300 hover:text-white hover:bg-neutral-850'
+                ? 'bg-emerald-950/70 text-emerald-300 border border-emerald-700/50 font-semibold shadow-xs'
+                : 'text-neutral-300 hover:text-white hover:bg-neutral-800/70'
             }`}
           >
             <Home className="w-3.5 h-3.5" />
@@ -85,58 +85,58 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={() => onSelectTab('docs')}
-            className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'docs'
-                ? 'bg-neutral-800 text-emerald-300 font-semibold shadow-xs'
-                : 'text-neutral-300 hover:text-white hover:bg-neutral-850'
+                ? 'bg-emerald-950/70 text-emerald-300 border border-emerald-700/50 font-semibold shadow-xs'
+                : 'text-neutral-300 hover:text-white hover:bg-neutral-800/70'
             }`}
           >
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Handbook Docs</span>
+            <span>Handbook</span>
           </button>
 
           <button
             onClick={() => onSelectTab('projects')}
-            className={`px-2.5 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
+            className={`px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'projects'
-                ? 'bg-neutral-800 text-emerald-300 font-semibold shadow-xs'
-                : 'text-neutral-300 hover:text-white hover:bg-neutral-850'
+                ? 'bg-emerald-950/70 text-emerald-300 border border-emerald-700/50 font-semibold shadow-xs'
+                : 'text-neutral-300 hover:text-white hover:bg-neutral-800/70'
             }`}
           >
             <Wrench className="w-3.5 h-3.5" />
-            <span>Interactive Labs</span>
+            <span>Labs</span>
           </button>
 
           <button
             onClick={() => onSelectTab('troubleshooting')}
-            className={`px-2.5 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
+            className={`px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'troubleshooting'
-                ? 'bg-neutral-800 text-emerald-300 font-semibold shadow-xs'
-                : 'text-neutral-300 hover:text-white hover:bg-neutral-850'
+                ? 'bg-emerald-950/70 text-emerald-300 border border-emerald-700/50 font-semibold shadow-xs'
+                : 'text-neutral-300 hover:text-white hover:bg-neutral-800/70'
             }`}
           >
             <AlertTriangle className="w-3.5 h-3.5" />
-            <span>Diagnostic Wizard</span>
+            <span>Diagnostics</span>
           </button>
 
           <button
             onClick={() => onSelectTab('prompts')}
-            className={`px-2.5 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
+            className={`px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'prompts'
-                ? 'bg-neutral-800 text-emerald-300 font-semibold shadow-xs'
-                : 'text-neutral-300 hover:text-white hover:bg-neutral-850'
+                ? 'bg-emerald-950/70 text-emerald-300 border border-emerald-700/50 font-semibold shadow-xs'
+                : 'text-neutral-300 hover:text-white hover:bg-neutral-800/70'
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Prompts (35)</span>
+            <span>Prompts</span>
           </button>
 
           <button
             onClick={() => onSelectTab('models')}
-            className={`px-2.5 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
+            className={`px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'models'
-                ? 'bg-neutral-800 text-emerald-300 font-semibold shadow-xs'
-                : 'text-neutral-300 hover:text-white hover:bg-neutral-850'
+                ? 'bg-emerald-950/70 text-emerald-300 border border-emerald-700/50 font-semibold shadow-xs'
+                : 'text-neutral-300 hover:text-white hover:bg-neutral-800/70'
             }`}
           >
             <Cpu className="w-3.5 h-3.5" />
@@ -145,10 +145,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={() => onSelectTab('commands')}
-            className={`px-2.5 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
+            className={`px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'commands'
-                ? 'bg-neutral-800 text-emerald-300 font-semibold shadow-xs'
-                : 'text-neutral-300 hover:text-white hover:bg-neutral-850'
+                ? 'bg-emerald-950/70 text-emerald-300 border border-emerald-700/50 font-semibold shadow-xs'
+                : 'text-neutral-300 hover:text-white hover:bg-neutral-800/70'
             }`}
           >
             <Terminal className="w-3.5 h-3.5" />
@@ -156,30 +156,29 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           <button
-            onClick={() => onSelectTab('audit')}
-            className={`px-2.5 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
-              activeTab === 'audit'
-                ? 'bg-neutral-800 text-emerald-300 font-semibold shadow-xs'
-                : 'text-neutral-300 hover:text-white hover:bg-neutral-850'
+            onClick={() => onSelectTab('faqs')}
+            className={`px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
+              activeTab === 'faqs'
+                ? 'bg-emerald-950/70 text-emerald-300 border border-emerald-700/50 font-semibold shadow-xs'
+                : 'text-neutral-300 hover:text-white hover:bg-neutral-800/70'
             }`}
           >
-            <Award className="w-3.5 h-3.5" />
-            <span>Audit (100%)</span>
+            <HelpCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+            <span>FAQs</span>
           </button>
         </nav>
 
         {/* Right Search Control */}
-        <div className="flex items-center gap-2">
-          {/* Quick Search Trigger */}
+        <div className="flex items-center gap-2 shrink-0">
           <button
             type="button"
             onClick={onOpenSearch}
-            className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50/80 dark:bg-neutral-900/60 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 text-xs transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-hidden"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-neutral-800 bg-neutral-900/90 hover:bg-neutral-800 text-neutral-300 hover:text-white text-xs transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-hidden"
             aria-label="Search handbook documentation"
           >
-            <Search className="w-3.5 h-3.5" />
+            <Search className="w-3.5 h-3.5 text-emerald-400" />
             <span className="hidden sm:inline">Search docs...</span>
-            <kbd className="hidden sm:inline font-mono text-[10px] px-1.5 py-0.5 rounded bg-neutral-200 dark:bg-neutral-800 text-neutral-400">
+            <kbd className="hidden sm:inline font-mono text-[10px] px-1.5 py-0.5 rounded bg-neutral-800 text-neutral-400 border border-neutral-700">
               ⌘K
             </kbd>
           </button>

@@ -12,14 +12,14 @@ import { ArticleView } from './components/ArticleView';
 import { OnThisPageToc } from './components/OnThisPageToc';
 import { HomepageView } from './components/HomepageView';
 import { SearchModal } from './components/SearchModal';
-import { PdfViewerModal } from './components/PdfViewerModal';
 import { InteractiveProjects } from './components/InteractiveProjects';
 import { TroubleshootingWizard } from './components/TroubleshootingWizard';
 import { PromptLibraryView } from './components/PromptLibraryView';
 import { ModelMatrixView } from './components/ModelMatrixView';
 import { CommandRefView } from './components/CommandRefView';
-import { ContentCompletenessReport } from './components/ContentCompletenessReport';
-import { Home, ArrowLeft } from 'lucide-react';
+import { FaqPageView } from './components/FaqPageView';
+import { SiteFooter, LegalAndContactView, ExtendedAppTab } from './components/FooterAndLegal';
+import { Home } from 'lucide-react';
 
 const BackToHomeBar: React.FC<{ title: string; subtitle?: string; onHome: () => void }> = ({
   title,
@@ -44,7 +44,7 @@ const BackToHomeBar: React.FC<{ title: string; subtitle?: string; onHome: () => 
 );
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<MainNavTab | 'home'>('home');
+  const [activeTab, setActiveTab] = useState<ExtendedAppTab>('home');
   const [currentSlug, setCurrentSlug] = useState<string>('chapter-1');
 
   const [completedSlugs, setCompletedSlugs] = useState<Set<string>>(() => {
@@ -66,7 +66,6 @@ export default function App() {
   });
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Ensure dark theme is permanently enabled
@@ -89,8 +88,16 @@ export default function App() {
           setActiveTab('models');
         } else if (hash === 'commands') {
           setActiveTab('commands');
-        } else if (hash === 'audit') {
-          setActiveTab('audit');
+        } else if (hash === 'faqs') {
+          setActiveTab('faqs');
+        } else if (hash === 'privacy') {
+          setActiveTab('privacy');
+        } else if (hash === 'disclaimer') {
+          setActiveTab('disclaimer');
+        } else if (hash === 'contact') {
+          setActiveTab('contact');
+        } else if (hash === 'home') {
+          setActiveTab('home');
         } else {
           // Check if matches a chapter slug
           const doc = getChapterBySlug(hash);
@@ -244,10 +251,10 @@ export default function App() {
               }}
               onNavigateChapter={handleNavigateChapter}
               onOpenSearch={() => setIsSearchOpen(true)}
-              onOpenPdfViewer={() => setIsPdfModalOpen(true)}
               onSelectTab={(tab) => {
                 setActiveTab(tab);
                 window.location.hash = tab;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             />
           </main>
@@ -340,35 +347,87 @@ export default function App() {
           </main>
         )}
 
-        {/* Content Completeness Audit & Release Certification */}
-        {activeTab === 'audit' && (
+        {/* Technical & Zero-Cost FAQs Page */}
+        {activeTab === 'faqs' && (
           <main className="flex-1 min-w-0 px-4 sm:px-8 py-8">
             <div className="max-w-5xl mx-auto space-y-6">
               <BackToHomeBar
-                title="Handbook Completeness & Release Audit"
-                subtitle="100% Invariant Verification"
+                title="Frequently Asked Questions"
+                subtitle="Complete Zero-Cost Knowledge Base"
                 onHome={() => {
                   setActiveTab('home');
                   window.location.hash = 'home';
                 }}
               />
-              <ContentCompletenessReport />
+              <FaqPageView
+                onNavigateChapter={handleNavigateChapter}
+                onNavigateContact={() => {
+                  setActiveTab('contact');
+                  window.location.hash = 'contact';
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              />
+            </div>
+          </main>
+        )}
+
+        {/* Privacy Policy, Legal Disclaimer & Contact Us Pages */}
+        {(activeTab === 'privacy' || activeTab === 'disclaimer' || activeTab === 'contact') && (
+          <main className="flex-1 min-w-0 px-4 sm:px-8 py-8">
+            <div className="max-w-5xl mx-auto space-y-6">
+              <BackToHomeBar
+                title={
+                  activeTab === 'privacy'
+                    ? 'Privacy Policy'
+                    : activeTab === 'disclaimer'
+                      ? 'Legal Disclaimer'
+                      : 'Contact Us & Support Desk'
+                }
+                subtitle="Claude Code at ₹0 Official Governance & Support"
+                onHome={() => {
+                  setActiveTab('home');
+                  window.location.hash = 'home';
+                }}
+              />
+              <LegalAndContactView
+                activePage={activeTab}
+                onSwitchPage={(page) => {
+                  setActiveTab(page);
+                  window.location.hash = page;
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onNavigateHome={() => {
+                  setActiveTab('home');
+                  window.location.hash = 'home';
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onNavigateTab={(tab) => {
+                  setActiveTab(tab);
+                  window.location.hash = tab;
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              />
             </div>
           </main>
         )}
       </div>
+
+      {/* Global Branded Multi-Column Site Footer */}
+      <SiteFooter
+        activeTab={activeTab}
+        onSelectTab={(tab) => {
+          setActiveTab(tab);
+          window.location.hash = tab === 'docs' ? currentSlug : tab;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onNavigateChapter={handleNavigateChapter}
+      />
 
       {/* Global Search Dialog Modal */}
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         onNavigate={handleSearchNavigate}
-      />
-
-      {/* Original PDF Viewer Modal */}
-      <PdfViewerModal
-        isOpen={isPdfModalOpen}
-        onClose={() => setIsPdfModalOpen(false)}
       />
     </div>
   );

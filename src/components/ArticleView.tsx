@@ -162,10 +162,6 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
 
         {/* Badges strip */}
         <div className="mt-4 flex flex-wrap items-center gap-2.5 text-xs">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 font-mono shadow-2xs">
-            <BookOpen className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>{chapter.sourcePageRange} in PDF</span>
-          </span>
 
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 shadow-2xs">
             <Clock className="w-3.5 h-3.5 text-neutral-500" />

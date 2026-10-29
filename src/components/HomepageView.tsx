@@ -60,7 +60,6 @@ interface HomepageViewProps {
   onStartReading: () => void;
   onNavigateChapter: (slug: string) => void;
   onOpenSearch: () => void;
-  onOpenPdfViewer: () => void;
   onSelectTab: (tab: any) => void;
 }
 
@@ -71,7 +70,6 @@ export const HomepageView: React.FC<HomepageViewProps> = ({
   onStartReading,
   onNavigateChapter,
   onOpenSearch,
-  onOpenPdfViewer,
   onSelectTab,
 }) => {
   // --------------------------------------------------------------------------
@@ -695,12 +693,12 @@ VERIFICATION: Run regression test suite and ensure zero regressions.`;
 
               <button
                 type="button"
-                onClick={onOpenPdfViewer}
+                onClick={() => onSelectTab('faqs')}
                 className="flex items-center gap-2 px-4 py-3 rounded-xl border border-neutral-800 hover:bg-neutral-900 text-neutral-300 hover:text-white font-medium text-sm transition-colors cursor-pointer"
-                title="View original 120-page PDF"
+                title="Browse Technical & Zero-Cost FAQs"
               >
-                <Download className="w-4 h-4 text-neutral-400" />
-                <span>Source PDF (6.8 MB)</span>
+                <HelpCircle className="w-4 h-4 text-emerald-400" />
+                <span>Engineering FAQs</span>
               </button>
             </div>
 
@@ -729,76 +727,59 @@ VERIFICATION: Run regression test suite and ensure zero regressions.`;
             </div>
           </div>
 
-          {/* Right Column: Tactile Hardcover Physical Book Showcase & Interactive Peek */}
+          {/* Right Column: Solarpunk Botanical Studio Artwork & Interactive Book Peek */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <div className="relative group max-w-sm w-full mx-auto">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-600/20 via-teal-500/10 to-transparent rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity" />
+            <div className="relative group w-full">
+              <div className="absolute -inset-3 bg-gradient-to-tr from-emerald-500/25 via-teal-400/15 to-amber-400/10 rounded-3xl blur-xl opacity-80 group-hover:opacity-100 transition-opacity" />
 
-              {/* Physical Hardcover Book Container */}
-              <div className="relative bg-[#0d100e] border border-[#232a25] rounded-xl overflow-hidden shadow-2xl transition-all duration-300 group-hover:-translate-y-1.5 flex flex-col aspect-[3/4] p-6 text-neutral-100 select-none">
-                <div className="absolute inset-2 border border-emerald-500/25 rounded-lg pointer-events-none" />
-                <div className="absolute inset-2.5 border border-amber-500/20 rounded-lg pointer-events-none" />
-                <div className="absolute left-0 top-0 bottom-0 w-3.5 bg-gradient-to-r from-neutral-950 via-neutral-800 to-transparent" />
-
-                {/* Silk Ribbon Bookmark */}
-                <div className="absolute right-8 top-0 w-4 h-12 bg-emerald-600 shadow-md">
-                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-[#0d100e] [clip-path:polygon(0_100%,50%_0,100%_100%)]" />
+              {/* Solarpunk Botanical 16:9 Hero Banner Card */}
+              <div className="relative bg-[#0a1812] border border-emerald-700/50 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
+                {/* Visual Header Pill */}
+                <div className="px-3.5 py-2 bg-[#06140e] border-b border-emerald-800/40 flex items-center justify-between text-[11px] font-mono text-emerald-400">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>SUSTAINABLE COMPUTE • OPEN-SOURCE AI</span>
+                  </div>
+                  <span className="text-emerald-300/90 font-semibold">16:9 • 0g CO₂ • ₹0</span>
                 </div>
 
-                <div className="pt-2 pl-3">
-                  <div className="text-[9px] font-mono tracking-[0.25em] text-emerald-400 uppercase font-semibold">
-                    Autonomous Systems Engineering Manual
-                  </div>
-                  <div className="text-[8px] font-mono tracking-widest text-neutral-400 mt-0.5">
-                    First Complete Reference Edition &bull; 2026
-                  </div>
+                <div className="relative aspect-video w-full overflow-hidden bg-emerald-950/40">
+                  <img
+                    src="/images/eco-ai-hero-banner-16x9.svg"
+                    alt="Sustainable Open-Source AI and Low-Power Computing Hero Banner"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover block transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="eager"
+                  />
+                  {/* Subtle glass gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#07120d] via-transparent to-transparent opacity-30 pointer-events-none" />
                 </div>
 
-                <div className="my-auto pl-3 flex flex-col items-center justify-center text-center py-4">
-                  <div className="relative w-28 h-28 mb-3">
-                    <svg viewBox="0 0 100 100" className="w-full h-full text-emerald-500/80">
-                      <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" opacity="0.4" />
-                      <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.6" />
-                      <polygon points="50,14 82,72 18,72" fill="none" stroke="#eab308" strokeWidth="1.2" opacity="0.5" />
-                      <polygon points="50,86 18,28 82,28" fill="none" stroke="currentColor" strokeWidth="1.2" opacity="0.5" />
-                      <circle cx="50" cy="50" r="8" fill="#10b981" fillOpacity="0.2" stroke="#10b981" strokeWidth="1.5" />
-                      <path d="M46 47 L52 50 L46 53" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                {/* Bottom Overlay Bar with Interactive Peek & Eco Telemetry */}
+                <div className="p-3.5 bg-[#07120d]/95 border-t border-emerald-800/60 flex flex-wrap items-center justify-between gap-3 text-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="font-mono text-[11px] text-emerald-300 font-semibold">
+                      🌱 Zero-Carbon Loopback • 0g E-Waste
+                    </span>
                   </div>
 
-                  <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-white leading-tight font-serif">
-                    CLAUDE CODE
-                  </div>
-                  <div className="text-3xl font-black tracking-tight text-emerald-400 leading-none mt-1">
-                    AT <span className="font-sans">₹0</span>
-                  </div>
-                  <div className="text-[10px] tracking-widest text-neutral-300 uppercase font-medium mt-2 max-w-[200px]">
-                    The Complete AI Coding Agent Handbook
-                  </div>
-                </div>
-
-                <div className="pl-3 pt-3 border-t border-neutral-800/80 flex items-center justify-between text-[9px] font-mono text-neutral-400">
-                  <div>
-                    <span className="text-neutral-200 font-semibold">120 Pages</span> &bull; 24 Chapters
-                  </div>
                   <button
                     type="button"
                     onClick={() => {
                       setIsPeekModalOpen(true);
                       playClickSound(850, 0.05);
                     }}
-                    className="text-emerald-400 hover:text-emerald-300 font-medium flex items-center gap-1 cursor-pointer bg-neutral-900/90 px-2.5 py-1 rounded border border-neutral-700/60 hover:border-emerald-500/50 transition-colors"
+                    className="text-emerald-300 hover:text-white font-semibold flex items-center gap-1.5 cursor-pointer bg-emerald-950/80 hover:bg-emerald-900 px-3 py-1.5 rounded-lg border border-emerald-600/50 transition-colors text-xs"
                   >
-                    <Eye className="w-3 h-3" />
-                    <span>Flip &amp; Peek Inside</span>
+                    <Eye className="w-3.5 h-3.5" />
+                    <span>Peek Inside Handbook</span>
                   </button>
                 </div>
               </div>
-
-              <div className="w-[92%] mx-auto h-3 bg-neutral-950 rounded-b-lg -mt-1 blur-[1px] opacity-80" />
             </div>
 
-            <div className="mt-3 flex items-center gap-3 text-xs text-neutral-400 font-mono">
+            <div className="mt-3 flex items-center gap-3 text-xs text-neutral-300 font-mono">
               <button
                 type="button"
                 onClick={() => {
@@ -807,18 +788,139 @@ VERIFICATION: Run regression test suite and ensure zero regressions.`;
                 }}
                 className="text-emerald-400 hover:underline flex items-center gap-1 cursor-pointer"
               >
-                <span>Read Sample Pages (1–4)</span>
+                <span>Read Sample Excerpts (Pages 1–4)</span>
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
               <span>&bull;</span>
               <button
                 type="button"
-                onClick={onOpenPdfViewer}
+                onClick={() => onSelectTab('faqs')}
                 className="text-neutral-300 hover:text-white flex items-center gap-1 cursor-pointer"
               >
-                <span>Inspect PDF Source</span>
-                <ExternalLink className="w-3 h-3" />
+                <span>Browse FAQs</span>
+                <HelpCircle className="w-3 h-3 text-emerald-400" />
               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          1B. Eco-Friendly Sustainable AI Architecture Gallery
+          ───────────────────────────────────────────────────────────── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-2xl border border-emerald-800/50 bg-gradient-to-br from-[#0c1d15] via-[#0f2219] to-[#0a1711] p-6 sm:p-8 shadow-xl space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-emerald-900/60 pb-5">
+            <div>
+              <div className="text-[11px] font-mono text-emerald-400 uppercase tracking-widest font-semibold mb-1 flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-emerald-400" />
+                <span>Sustainable Green Computing • Zero-Waste AI</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+                Why <span className="font-sans text-emerald-400">₹0</span> Architecture is Planet-Friendly by Design
+              </h2>
+              <p className="text-xs sm:text-sm text-emerald-100/80 mt-1 max-w-3xl">
+                Bloated cloud agent loops waste megawatts of energy and thousands of liters of datacenter cooling water. Our zero-cost architecture cuts compute waste by 75% while extending the lifespan of your existing hardware.
+              </p>
+            </div>
+
+            <div className="px-3.5 py-2 rounded-xl bg-emerald-950/80 border border-emerald-600/50 text-xs font-mono text-emerald-300 flex items-center gap-2">
+              <span>🌿 78% Lower Compute Footprint</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Visual Card 1: Terrarium Local Quantization */}
+            <div
+              onClick={() => onNavigateChapter('chapter-7')}
+              className="rounded-xl border border-emerald-800/50 bg-[#08140f] overflow-hidden hover:border-emerald-500 transition-all cursor-pointer group flex flex-col justify-between"
+            >
+              <div>
+                <div className="overflow-hidden border-b border-emerald-900/50 bg-[#06100c]">
+                  <img
+                    src="/images/eco-local-compute.svg"
+                    alt="Zero E-Waste Local Terrarium Compute"
+                    className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-5 space-y-2">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-semibold">
+                    01 • Zero E-Waste Hardware Revival
+                  </div>
+                  <h3 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
+                    8-Bit KV Cache &amp; Laptop Longevity
+                  </h3>
+                  <p className="text-xs text-neutral-300 leading-relaxed">
+                    Instead of discarding 4GB–16GB laptops for expensive new hardware, Path A and quantized Path B (`q8_0` Flash Attention) keep existing machines productive for 5+ extra years.
+                  </p>
+                </div>
+              </div>
+              <div className="px-5 pb-4 pt-2 border-t border-emerald-950 flex items-center justify-between text-[11px] font-mono text-emerald-400">
+                <span>saves ~320 kg CO₂ embodied carbon</span>
+                <span>Ch 7 &rarr;</span>
+              </div>
+            </div>
+
+            {/* Visual Card 2: Mycelium Token Pruning */}
+            <div
+              onClick={() => onNavigateChapter('chapter-16')}
+              className="rounded-xl border border-emerald-800/50 bg-[#08140f] overflow-hidden hover:border-emerald-500 transition-all cursor-pointer group flex flex-col justify-between"
+            >
+              <div>
+                <div className="overflow-hidden border-b border-emerald-900/50 bg-[#06100c]">
+                  <img
+                    src="/images/eco-zero-carbon-loop.svg"
+                    alt="Bioluminescent Mycelium Token Compression"
+                    className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-5 space-y-2">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-semibold">
+                    02 • Lean Context Hygiene (/compact)
+                  </div>
+                  <h3 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
+                    75% Less Datacenter Energy &amp; Water
+                  </h3>
+                  <p className="text-xs text-neutral-300 leading-relaxed">
+                    Discipline-first `/compact` checkpoints, `.claudeignore` filters, and distilled Flash/Coder models eliminate redundant 200K-token re-reads on every turn.
+                  </p>
+                </div>
+              </div>
+              <div className="px-5 pb-4 pt-2 border-t border-emerald-950 flex items-center justify-between text-[11px] font-mono text-emerald-400">
+                <span>4.2x higher tokens-per-watt</span>
+                <span>Ch 16 &rarr;</span>
+              </div>
+            </div>
+
+            {/* Visual Card 3: 3.5W Solar Pocket Garden */}
+            <div
+              onClick={() => onNavigateChapter('chapter-9')}
+              className="rounded-xl border border-emerald-800/50 bg-[#08140f] overflow-hidden hover:border-emerald-500 transition-all cursor-pointer group flex flex-col justify-between"
+            >
+              <div>
+                <div className="overflow-hidden border-b border-emerald-900/50 bg-[#06100c]">
+                  <img
+                    src="/images/eco-mobile-garden.svg"
+                    alt="3.5W Mobile Termux Botanical Garden"
+                    className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-5 space-y-2">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-teal-400 font-semibold">
+                    03 • Ultra-Low-Wattage ARM64 Coding
+                  </div>
+                  <h3 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
+                    3.5-Watt Smartphone Terminal Agent
+                  </h3>
+                  <p className="text-xs text-neutral-300 leading-relaxed">
+                    Running Claude Code inside Android Termux draws just 3.5 Watts on ARM64 silicon—98% less electricity than a 350W desktop tower while delivering full autonomous capability.
+                  </p>
+                </div>
+              </div>
+              <div className="px-5 pb-4 pt-2 border-t border-emerald-950 flex items-center justify-between text-[11px] font-mono text-emerald-400">
+                <span>3.5W ARM64 vs 350W Desktop</span>
+                <span>Ch 9 &rarr;</span>
+              </div>
             </div>
           </div>
         </div>
@@ -2170,18 +2272,7 @@ VERIFICATION: Run regression test suite and ensure zero regressions.`;
           </div>
         )}
       </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          11. Publication Disclaimer Footer
-          ───────────────────────────────────────────────────────────── */}
-      <footer className="max-w-4xl mx-auto px-4 pt-10 border-t border-neutral-800 text-xs text-neutral-400 text-center space-y-2">
-        <p>
-          <strong>Independent Publication Disclaimer:</strong> This documentation platform and the underlying handbook are an independent educational engineering publication and are not affiliated with, endorsed by, sponsored by, or officially approved by Anthropic PBC, Google LLC, Microsoft Corporation, GitHub Inc., OpenRouter Inc., Ollama Inc., or any other commercial entity.
-        </p>
-        <p className="font-mono text-[11px] text-neutral-400">
-          Document ID: TECH-HB-CC0-2026-V1 &bull; First Complete Reference Edition &bull; Verified October 2026
-        </p>
-      </footer>
     </div>
   );
 };
+

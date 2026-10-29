@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgTerrarium" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071712" />
+      <stop offset="100%" stop-color="#0f2e22" />
+    </linearGradient>
+    <radialGradient id="terrariumGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.35" />
+      <stop offset="70%" stop-color="#059669" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#071712" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgTerrarium)" />
+  <circle cx="400" cy="225" r="220" fill="url(#terrariumGlow)" />
+
+  <!-- Glass Geometric Terrarium Dome -->
+  <polygon points="400,35 590,130 590,340 400,415 210,340 210,130" fill="#0b241b" fill-opacity="0.7" stroke="#34d399" stroke-width="2" />
+  <line x1="400" y1="35" x2="400" y2="415" stroke="#34d399" stroke-opacity="0.3" stroke-width="1.5" />
+  <line x1="210" y1="130" x2="590" y2="130" stroke="#34d399" stroke-opacity="0.3" stroke-width="1.5" />
+  <line x1="210" y1="340" x2="590" y2="340" stroke="#34d399" stroke-opacity="0.3" stroke-width="1.5" />
+
+  <!-- Living Moss Base inside Terrarium -->
+  <path d="M 215 338 Q 310 305 400 325 T 585 338 L 400 412 Z" fill="#047857" />
+  <path d="M 240 345 Q 340 315 400 335 T 560 345 L 400 405 Z" fill="#10b981" opacity="0.6" />
+
+  <!-- Quantized Local AI Core Crystal inside Terrarium -->
+  <polygon points="400,145 455,215 400,285 345,215" fill="#34d399" fill-opacity="0.25" stroke="#6ee7b7" stroke-width="2.5" />
+  <polygon points="400,165 435,215 400,265 365,215" fill="#fde68a" fill-opacity="0.35" stroke="#fef08a" stroke-width="1.5" />
+  <text x="400" y="220" fill="#ffffff" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">q8_0 64K</text>
+
+  <!-- Botanical Ferns Growing Around Core -->
+  <path d="M 350 330 Q 280 260 290 190 Q 340 240 350 330 Z" fill="#10b981" opacity="0.85" />
+  <path d="M 450 330 Q 520 260 510 190 Q 460 240 450 330 Z" fill="#059669" opacity="0.85" />
+  <path d="M 380 340 Q 330 280 320 230 Q 365 270 380 340 Z" fill="#34d399" opacity="0.75" />
+  <path d="M 420 340 Q 470 280 480 230 Q 435 270 420 340 Z" fill="#6ee7b7" opacity="0.75" />
+
+  <!-- Left & Right Telemetry Callout Badges -->
+  <g transform="translate(35, 175)">
+    <rect width="150" height="80" rx="12" fill="#091d16" stroke="#10b981" stroke-width="1.5" />
+    <text x="75" y="30" fill="#6ee7b7" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">ZERO E-WASTE</text>
+    <text x="75" y="50" fill="#cbd5e1" font-family="sans-serif" font-size="11" text-anchor="middle">Revives 4GB–16GB</text>
+    <text x="75" y="66" fill="#34d399" font-family="monospace" font-size="11" text-anchor="middle">Existing Laptops</text>
+  </g>
+
+  <g transform="translate(615, 175)">
+    <rect width="150" height="80" rx="12" fill="#091d16" stroke="#10b981" stroke-width="1.5" />
+    <text x="75" y="30" fill="#fde68a" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">50% LESS VRAM</text>
+    <text x="75" y="50" fill="#cbd5e1" font-family="sans-serif" font-size="11" text-anchor="middle">Flash Attention +</text>
+    <text x="75" y="66" fill="#34d399" font-family="monospace" font-size="11" text-anchor="middle">8-Bit KV Cache</text>
+  </g>
+</svg>

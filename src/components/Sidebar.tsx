@@ -165,13 +165,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <button
               type="button"
               onClick={() => {
-                onSelectTab('audit');
+                onSelectTab('faqs');
                 onCloseMobile();
               }}
               className="flex items-center gap-1.5 p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 text-left cursor-pointer"
             >
-              <Award className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-              <span>Audit (100%)</span>
+              <BookOpen className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+              <span>FAQs</span>
             </button>
           </div>
         </div>

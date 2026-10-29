@@ -1,25 +1,32 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root, .dark {
-    --bg-page: #101211;
-    --bg-surface: #161817;
-    --bg-card: #1B1E1C;
+    color-scheme: dark;
+    --bg-page: #08110d;
+    --bg-surface: #0e1b15;
+    --bg-card: #13231b;
     --text-primary: #F8FAFC;
-    --text-secondary: #CBD5E1;
-    --text-muted: #949B95;
-    --border-subtle: #262927;
-    --border-medium: #353B37;
-    --accent: #1D9B71;
-    --accent-hover: #22B282;
-    --accent-light: #0D2B20;
-    --code-bg: #141715;
-    --code-border: #282D2A;
-    --code-text: #E5E7EB;
+    --text-secondary: #D1FAE5;
+    --text-muted: #94A3B8;
+    --border-subtle: #1e352a;
+    --border-medium: #284738;
+    --accent: #10B981;
+    --accent-hover: #34D399;
+    --accent-light: #064E3B;
+    --code-bg: #0b1611;
+    --code-border: #1e382b;
+    --code-text: #E2E8F0;
   }
 
   body {
     background-color: var(--bg-page);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(16, 185, 129, 0.10) 0%, transparent 40%),
+      radial-gradient(circle at 85% 25%, rgba(251, 191, 36, 0.06) 0%, transparent 35%),
+      radial-gradient(circle at 50% 80%, rgba(5, 150, 105, 0.08) 0%, transparent 45%);
+    background-attachment: fixed;
     color: var(--text-secondary);
     font-family: "Poppins", "Noto Sans Devanagari", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;

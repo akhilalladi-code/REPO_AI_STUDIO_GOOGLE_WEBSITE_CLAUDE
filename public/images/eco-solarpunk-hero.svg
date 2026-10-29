@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#061510" />
+      <stop offset="45%" stop-color="#0c261c" />
+      <stop offset="100%" stop-color="#133829" />
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="75%" cy="22%" r="55%">
+      <stop offset="0%" stop-color="#fde68a" stop-opacity="0.45" />
+      <stop offset="35%" stop-color="#34d399" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#061510" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="orbGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.7" />
+      <stop offset="60%" stop-color="#10b981" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="leafGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#065f46" />
+    </linearGradient>
+    <linearGradient id="leafGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#a7f3d0" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1f17" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#07140f" stop-opacity="0.96" />
+    </linearGradient>
+    <linearGradient id="goldBeam" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Solarpunk Conservatory Background -->
+  <rect width="800" height="600" fill="url(#skyGrad)" />
+  <rect width="800" height="600" fill="url(#sunGlow)" />
+
+  <!-- Architectural Glass Conservatory Arches -->
+  <g stroke="#34d399" stroke-opacity="0.18" stroke-width="1.5" fill="none">
+    <path d="M 80 600 L 80 180 Q 400 -20 720 180 L 720 600" />
+    <path d="M 140 600 L 140 210 Q 400 40 660 210 L 660 600" />
+    <line x1="400" y1="75" x2="400" y2="600" />
+    <line x1="80" y1="280" x2="720" y2="280" />
+    <line x1="80" y1="420" x2="720" y2="420" />
+  </g>
+
+  <!-- Golden Sunbeams Filtering Through Canopy -->
+  <polygon points="620,0 780,0 420,600 180,600" fill="url(#goldBeam)" />
+  <polygon points="480,0 580,0 220,600 80,600" fill="url(#goldBeam)" opacity="0.6" />
+
+  <!-- Glowing Solarpunk Sun Orb -->
+  <circle cx="600" cy="130" r="68" fill="url(#orbGlow)" />
+  <circle cx="600" cy="130" r="28" fill="#fef08a" fill-opacity="0.65" />
+
+  <!-- Distant Botanical Hills & Terraces -->
+  <path d="M 0 470 Q 180 390 380 450 T 800 430 L 800 600 L 0 600 Z" fill="#062017" opacity="0.85" />
+  <path d="M 0 510 Q 260 440 520 490 T 800 480 L 800 600 L 0 600 Z" fill="#092c20" />
+
+  <!-- Bioluminescent Mycelium & Fiber-Optic Root Network -->
+  <g stroke="#34d399" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.65">
+    <path d="M 400 420 C 340 470, 240 490, 120 560" stroke-dasharray="4 4" />
+    <path d="M 400 420 C 460 470, 560 500, 690 560" stroke-dasharray="4 4" />
+    <path d="M 400 420 C 390 480, 410 530, 400 590" />
+    <circle cx="240" cy="500" r="4" fill="#6ee7b7" />
+    <circle cx="555" cy="505" r="4" fill="#6ee7b7" />
+    <circle cx="400" cy="530" r="5" fill="#fde68a" />
+  </g>
+
+  <!-- Left Tropical Monstera & Fern Foliage -->
+  <g>
+    <path d="M -20 460 Q 90 320 210 350 Q 130 450 -20 460 Z" fill="url(#leafGrad1)" opacity="0.9" />
+    <path d="M -10 340 Q 110 210 230 250 Q 150 360 -10 340 Z" fill="url(#leafGrad2)" opacity="0.85" />
+    <path d="M 30 580 Q 120 430 250 470 Q 160 570 30 580 Z" fill="#047857" />
+    <!-- Leaf Veins -->
+    <path d="M 0 335 Q 100 265 210 255" stroke="#a7f3d0" stroke-width="1.5" fill="none" opacity="0.6" />
+    <path d="M 0 450 Q 95 375 195 355" stroke="#a7f3d0" stroke-width="1.5" fill="none" opacity="0.6" />
+  </g>
+
+  <!-- Right Lush Botanical Canopy -->
+  <g>
+    <path d="M 820 440 Q 680 300 570 340 Q 660 450 820 440 Z" fill="url(#leafGrad1)" opacity="0.9" />
+    <path d="M 810 310 Q 690 190 580 230 Q 660 330 810 310 Z" fill="url(#leafGrad2)" opacity="0.85" />
+    <path d="M 780 570 Q 670 430 540 470 Q 640 570 780 570 Z" fill="#065f46" />
+    <path d="M 800 305 Q 700 245 595 235" stroke="#fde68a" stroke-width="1.5" fill="none" opacity="0.5" />
+  </g>
+
+  <!-- Center Solarpunk Floating Glass Terminal Sanctuary -->
+  <g transform="translate(175, 135)">
+    <!-- Outer Bioluminescent Aura -->
+    <rect x="-12" y="-12" width="474" height="314" rx="26" fill="none" stroke="#34d399" stroke-opacity="0.3" stroke-width="2" />
+    <!-- Main Terminal Glass Body -->
+    <rect x="0" y="0" width="450" height="290" rx="18" fill="url(#glassGrad)" stroke="#10b981" stroke-width="2" />
+    <!-- Top Window Bar -->
+    <rect x="0" y="0" width="450" height="36" rx="18" fill="#0d291e" />
+    <circle cx="22" cy="18" r="5" fill="#34d399" />
+    <circle cx="38" cy="18" r="5" fill="#fbbf24" />
+    <circle cx="54" cy="18" r="5" fill="#10b981" />
+    <text x="225" y="22" fill="#a7f3d0" font-family="monospace" font-size="11" text-anchor="middle" font-weight="bold">
+      eco-agent@127.0.0.1:4000 • 0g CO2 • ZERO COST
+    </text>
+
+    <!-- Terminal Code & Living Vines Visual -->
+    <g transform="translate(24, 58)" font-family="monospace" font-size="12">
+      <text x="0" y="16" fill="#6ee7b7">$ claude --eco-mode --model gemini-2.5-flash</text>
+      <text x="0" y="40" fill="#94a3b8">&gt; Routing via local loopback (127.0.0.1:4000)...</text>
+      <text x="0" y="64" fill="#34d399">&gt; Context compacted: 74% fewer tokens consumed</text>
+      <text x="0" y="88" fill="#fde68a">&gt; Hardware reused: 0 e-waste • $0.00 API cost</text>
+
+      <!-- Eco Telemetry Bars inside Terminal -->
+      <rect x="0" y="112" width="402" height="78" rx="10" fill="#05120d" stroke="#065f46" stroke-width="1.5" />
+      <text x="16" y="136" fill="#a7f3d0" font-size="11" font-weight="bold">SUSTAINABLE COMPUTE TELEMETRY</text>
+      <rect x="16" y="148" width="260" height="8" rx="4" fill="#064e3b" />
+      <rect x="16" y="148" width="235" height="8" rx="4" fill="#34d399" />
+      <text x="290" y="156" fill="#6ee7b7" font-size="11">92% Green Efficiency</text>
+      <text x="16" y="176" fill="#fde68a" font-size="11">★ Perpetual Zero Cost &amp; Low-Wattage Execution</text>
+    </g>
+
+    <!-- Decorative Sprouting Leaf on Top Corner of Terminal -->
+    <path d="M 435 10 Q 465 -25 490 -10 Q 470 20 435 10 Z" fill="#34d399" />
+    <path d="M 435 10 Q 450 -35 430 -45 Q 415 -15 435 10 Z" fill="#10b981" />
+  </g>
+
+  <!-- Floating Bioluminescent Spores / Fireflies -->
+  <g fill="#fef08a" opacity="0.8">
+    <circle cx="130" cy="160" r="3" />
+    <circle cx="220" cy="95" r="2.5" />
+    <circle cx="670" cy="210" r="3.5" />
+    <circle cx="520" cy="85" r="2" />
+    <circle cx="160" cy="390" r="3" />
+    <circle cx="640" cy="395" r="2.5" />
+  </g>
+</svg>
