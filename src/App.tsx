@@ -77,34 +77,36 @@ export default function App() {
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace(/^#/, '');
-      if (hash) {
-        if (hash === 'projects') {
-          setActiveTab('projects');
-        } else if (hash === 'troubleshooting') {
-          setActiveTab('troubleshooting');
-        } else if (hash === 'prompts') {
-          setActiveTab('prompts');
-        } else if (hash === 'models') {
-          setActiveTab('models');
-        } else if (hash === 'commands') {
-          setActiveTab('commands');
-        } else if (hash === 'faqs') {
-          setActiveTab('faqs');
-        } else if (hash === 'privacy') {
-          setActiveTab('privacy');
-        } else if (hash === 'disclaimer') {
-          setActiveTab('disclaimer');
-        } else if (hash === 'contact') {
-          setActiveTab('contact');
-        } else if (hash === 'home') {
-          setActiveTab('home');
-        } else {
-          // Check if matches a chapter slug
-          const doc = getChapterBySlug(hash);
-          if (doc) {
-            setCurrentSlug(doc.slug);
-            setActiveTab('docs');
-          }
+      const [route, ...anchorParts] = hash.split('#');
+      const anchor = anchorParts.join('#');
+      if (!route) return;
+
+      const tabRoutes: Record<string, ExtendedAppTab> = {
+        projects: 'projects',
+        troubleshooting: 'troubleshooting',
+        prompts: 'prompts',
+        models: 'models',
+        commands: 'commands',
+        faqs: 'faqs',
+        privacy: 'privacy',
+        disclaimer: 'disclaimer',
+        contact: 'contact',
+        home: 'home',
+      };
+
+      if (tabRoutes[route]) {
+        setActiveTab(tabRoutes[route]);
+        return;
+      }
+
+      const doc = getChapterBySlug(route);
+      if (doc) {
+        setCurrentSlug(doc.slug);
+        setActiveTab('docs');
+        if (anchor) {
+          window.setTimeout(() => {
+            document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 120);
         }
       }
     };
@@ -131,7 +133,7 @@ export default function App() {
       const next = new Set(prev);
       if (next.has(slug)) next.delete(slug);
       else next.add(slug);
-      localStorage.setItem('claude_zero_completed', JSON.stringify(Array.from(next)));
+      try { localStorage.setItem('claude_zero_completed', JSON.stringify(Array.from(next))); } catch { /* Keep progress for the current session if storage is unavailable. */ }
       return next;
     });
   };
@@ -141,7 +143,7 @@ export default function App() {
       const next = new Set(prev);
       if (next.has(slug)) next.delete(slug);
       else next.add(slug);
-      localStorage.setItem('claude_zero_bookmarks', JSON.stringify(Array.from(next)));
+      try { localStorage.setItem('claude_zero_bookmarks', JSON.stringify(Array.from(next))); } catch { /* Keep bookmarks for the current session if storage is unavailable. */ }
       return next;
     });
   };
@@ -151,8 +153,12 @@ export default function App() {
     if (doc) {
       setCurrentSlug(doc.slug);
       setActiveTab('docs');
-      window.location.hash = anchor ? `${doc.slug}#${anchor}` : doc.slug;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.location.hash = anchor ? doc.slug + '#' + anchor : doc.slug;
+      if (anchor) {
+        window.setTimeout(() => document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
   };
 
@@ -184,7 +190,8 @@ export default function App() {
   const nextChapter = currentIndex < ALL_DOCS.length - 1 ? ALL_DOCS[currentIndex + 1] : undefined;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg-page)] text-[var(--text-primary)] antialiased transition-colors">
+    <div id="app-shell" className="min-h-screen flex flex-col bg-[var(--bg-page)] text-[var(--text-primary)] antialiased transition-colors">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-emerald-600 focus:px-4 focus:py-2 focus:text-white">Skip to main content</a>
       {/* Top Navbar */}
       <Navbar
         activeTab={activeTab as MainNavTab}
@@ -198,7 +205,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 max-w-7xl w-full mx-auto flex">
+      <div id="main-content" tabIndex={-1} className="flex-1 max-w-7xl w-full mx-auto flex scroll-mt-20">
         {/* If in 'docs' mode, show 3-column Layout */}
         {activeTab === 'docs' && (
           <>
