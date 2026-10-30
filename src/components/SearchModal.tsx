@@ -26,36 +26,8 @@ const HighlightedText: React.FC<{ text: string; query: string }> = ({ text, quer
   if (tokens.length === 0) return <>{text}</>;
 
   const escaped = tokens.map((t) => t.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|');
-  const regex = new RegExp(`(${escaped})`, 'gi');
-  const exactMatch = new RegExp(`^(?:${escaped})/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import React, { useState, useEffect, useRef } from 'react';
-import { Search, X, BookOpen, AlertTriangle, Terminal, Sparkles, FileText, ArrowRight, Loader2 } from 'lucide-react';
-import { SearchEngine, SearchResult } from '../lib/searchEngine';
-import { buildSearchIndex } from '../data/masterHandbook';
-
-interface SearchModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onNavigate: (route: string, anchor?: string) => void;
-}
-
-/**
- * Renders text with query term matches visually highlighted via <mark> tags
- */
-const HighlightedText: React.FC<{ text: string; query: string }> = ({ text, query }) => {
-  if (!query.trim()) return <>{text}</>;
-  const tokens = query
-    .trim()
-    .split(/\s+/)
-    .filter((t) => t.length > 1);
-  if (tokens.length === 0) return <>{text}</>;
-
-  const escaped = tokens.map((t) => t.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|');
-  , 'i');
+  const regex = new RegExp(\`(\${escaped})\`, 'gi');
+  const exactMatch = new RegExp(\`^(?:\${escaped})$\`, 'i');
   const parts = text.split(regex);
 
   return (
