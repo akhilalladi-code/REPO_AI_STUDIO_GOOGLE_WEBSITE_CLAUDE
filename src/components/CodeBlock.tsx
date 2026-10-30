@@ -134,8 +134,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
       </div>
 
       {/* Code contents */}
-      <div className="p-4 overflow-x-auto text-xs sm:text-sm font-mono leading-relaxed selection:bg-emerald-900 selection:text-emerald-100">
-        <pre tabIndex={0} aria-label="Code snippet content" className="m-0 whitespace-pre focus-visible:outline-hidden">
+      <div className="max-h-[560px] overflow-auto p-4 text-[12px] sm:text-[13px] font-mono leading-6 selection:bg-emerald-900 selection:text-emerald-100">
+        <pre tabIndex={0} aria-label="Code snippet content" className="m-0 min-w-max whitespace-pre focus-visible:outline-hidden">
           {code}
         </pre>
       </div>
