@@ -42,14 +42,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-neutral-800 bg-[#101211]/95 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 xl:gap-4">
         {/* Left Brand - Generous gap & divider before Home button */}
-        <div className="flex items-center gap-3 shrink-0 mr-4 sm:mr-8 xl:mr-12 pr-4 sm:pr-6 xl:pr-8 border-r border-neutral-800/80">
+        <div className="flex items-center gap-3 shrink-0 mr-2 xl:mr-4 pr-2 xl:pr-4 border-r border-neutral-800/80">
           <button
             type="button"
             onClick={onToggleMobileMenu}
-            className="p-2 -ml-2 rounded-lg text-neutral-400 hover:bg-neutral-800 lg:hidden cursor-pointer shrink-0"
-            aria-label="Open sidebar navigation"
+            className="p-2 -ml-2 rounded-lg text-neutral-400 hover:bg-neutral-800 xl:hidden cursor-pointer shrink-0"
+            aria-label="Open site navigation"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -70,7 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Center Primary Nav Tabs (Desktop) */}
-        <nav className="hidden xl:flex items-center gap-1.5 text-xs font-medium flex-1" aria-label="Main navigation">
+        <nav className="hidden xl:flex items-center gap-1 text-[11px] font-medium flex-1 justify-center" aria-label="Main navigation">
           <button
             onClick={() => onSelectTab('home')}
             className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
