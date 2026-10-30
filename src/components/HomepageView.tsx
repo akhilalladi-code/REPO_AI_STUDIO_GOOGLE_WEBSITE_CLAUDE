@@ -745,7 +745,7 @@ VERIFICATION: Run regression test suite and ensure zero regressions.`;
 
                 <div className="relative aspect-video w-full overflow-hidden bg-emerald-950/40">
                   <img
-                    src="/images/eco-ai-hero-banner-16x9.svg"
+                    src={import.meta.env.BASE_URL + 'images/eco-ai-hero-banner-16x9.svg'}
                     alt="Sustainable Open-Source AI and Low-Power Computing Hero Banner"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover block transition-transform duration-500 group-hover:scale-[1.02]"
@@ -838,7 +838,7 @@ VERIFICATION: Run regression test suite and ensure zero regressions.`;
               <div>
                 <div className="overflow-hidden border-b border-emerald-900/50 bg-[#06100c]">
                   <img
-                    src="/images/eco-local-compute.svg"
+                    src={import.meta.env.BASE_URL + 'images/eco-local-compute.svg'}
                     alt="Zero E-Waste Local Terrarium Compute"
                     className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -869,7 +869,7 @@ VERIFICATION: Run regression test suite and ensure zero regressions.`;
               <div>
                 <div className="overflow-hidden border-b border-emerald-900/50 bg-[#06100c]">
                   <img
-                    src="/images/eco-zero-carbon-loop.svg"
+                    src={import.meta.env.BASE_URL + 'images/eco-zero-carbon-loop.svg'}
                     alt="Bioluminescent Mycelium Token Compression"
                     className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -900,7 +900,7 @@ VERIFICATION: Run regression test suite and ensure zero regressions.`;
               <div>
                 <div className="overflow-hidden border-b border-emerald-900/50 bg-[#06100c]">
                   <img
-                    src="/images/eco-mobile-garden.svg"
+                    src={import.meta.env.BASE_URL + 'images/eco-mobile-garden.svg'}
                     alt="3.5W Mobile Termux Botanical Garden"
                     className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
