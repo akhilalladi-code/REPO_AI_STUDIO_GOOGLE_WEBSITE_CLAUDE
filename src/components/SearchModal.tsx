@@ -26,8 +26,8 @@ const HighlightedText: React.FC<{ text: string; query: string }> = ({ text, quer
   if (tokens.length === 0) return <>{text}</>;
 
   const escaped = tokens.map((t) => t.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|');
-  const regex = new RegExp(\`(\${escaped})\`, 'gi');
-  const exactMatch = new RegExp(\`^(?:\${escaped})$\`, 'i');
+  const regex = new RegExp(`(${escaped})`, 'gi');
+  const exactMatch = new RegExp(`^(?:${escaped})$`, 'i');
   const parts = text.split(regex);
 
   return (
