@@ -20,7 +20,13 @@
     --code-text: #E2E8F0;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
   body {
+    min-width: 320px;
     background-color: var(--bg-page);
     background-image:
       radial-gradient(circle at 15% 10%, rgba(16, 185, 129, 0.10) 0%, transparent 40%),
@@ -71,6 +77,16 @@
     font-family: "JetBrains Mono", "Noto Sans Devanagari", "Poppins", system-ui, ui-monospace, SFMono-Regular, monospace;
   }
 
+  :focus-visible {
+    outline: 2px solid var(--accent-hover);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: rgba(16, 185, 129, 0.28);
+    color: #F8FAFC;
+  }
+
   /* Custom smooth dark scrollbars */
   ::-webkit-scrollbar {
     width: 6px;
@@ -109,6 +125,19 @@
   }
   .border-theme-subtle {
     border-color: var(--border-subtle) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body { background-attachment: scroll; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
