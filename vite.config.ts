@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/REPO_AI_STUDIO_GOOGLE_WEBSITE_CLAUDE/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
