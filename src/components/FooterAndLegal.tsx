@@ -24,6 +24,8 @@ import {
   MessageSquare,
   HelpCircle,
   Github,
+  Linkedin,
+  Youtube,
   Lock,
   Server,
   EyeOff,
@@ -59,444 +61,158 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const selectPage = (tab: ExtendedAppTab) => {
+    onSelectTab(tab);
+    scrollToTop();
+  };
+
+  const navigateChapter = (slug: string) => {
+    onNavigateChapter(slug);
+    scrollToTop();
+  };
+
+  const linkClass =
+    'block w-fit text-sm leading-6 text-[#A3A3A3] hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981] focus-visible:ring-offset-4 focus-visible:ring-offset-[#1C1C1C] rounded-sm';
+  const headingClass =
+    'mb-5 text-[15px] font-medium tracking-tight text-[#F2F2F2]';
+
   return (
-    <footer className="w-full border-t border-emerald-950/80 bg-[#090D0B] text-[#E5E7EB] mt-16">
-      {/* Main Multi-Column Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-14 pb-10 sm:pb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-9 lg:gap-10">
-          {/* Column 1: Brand Logo + Overview (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
+    <footer className="mt-16 w-full border-t border-white/10 bg-[#1C1C1C] text-[#E5E5E5]">
+      <div className="mx-auto max-w-[1280px] px-6 pb-20 pt-20 sm:px-8 lg:px-10 lg:pb-24 lg:pt-24">
+        <div className="grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-5 lg:gap-x-12">
+          {/* Brand and social links */}
+          <div className="space-y-7 lg:col-span-1">
             <button
               type="button"
-              onClick={() => {
-                onSelectTab('home');
-                scrollToTop();
-              }}
-              className="flex items-center gap-2.5 text-left cursor-pointer group"
+              onClick={() => selectPage('home')}
+              className="group flex items-center gap-3 text-left"
               title="Claude Code at ₹0 Homepage"
             >
-              <div className="w-10 h-10 rounded-xl bg-[#10B981] text-[#052E20] flex items-center justify-center font-bold text-base shadow-lg shadow-emerald-950/30 group-hover:bg-emerald-300 transition-colors shrink-0 font-sans">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#10B981] font-sans text-base font-bold text-[#052E20] transition-colors group-hover:bg-[#34D399]">
                 ₹0
-              </div>
-              <span className="font-bold text-xl text-white tracking-tight group-hover:text-emerald-300 transition-colors">
+              </span>
+              <span className="text-xl font-semibold tracking-tight text-white transition-colors group-hover:text-[#10B981]">
                 Claude Code at <span className="font-sans">₹</span>0
               </span>
             </button>
 
-            <p className="text-sm text-[#A7B0AA] leading-7 max-w-sm">
-              Interactive engineering platform and complete 24-chapter technical reference for running autonomous terminal coding agents at zero API cost using free-tier cloud providers and local open-weight models.
+            <p className="max-w-xs text-sm leading-7 text-[#A3A3A3]">
+              A practical, interactive handbook for building capable coding-agent workflows with free-tier cloud services and local models.
             </p>
 
-            {/* Live Architecture Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#0D1712] border border-emerald-900/70 text-xs text-emerald-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-mono text-[11px]">Zero-Cost Stack Verified • v2026.10</span>
-            </div>
-
-            {/* Quick Legal Pills */}
-            <div className="pt-1 flex flex-wrap items-center gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  onSelectTab('privacy');
-                  scrollToTop();
-                }}
-                className="px-3 py-1.5 rounded-lg bg-[#111815] hover:bg-[#16231B] border border-[#24352B] text-xs text-[#C5D0C9] hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
-              >
-                <Shield className="w-3 h-3 text-emerald-400" />
-                <span>Zero-Telemetry</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  onSelectTab('contact');
-                  scrollToTop();
-                }}
-                className="px-3 py-1.5 rounded-lg bg-[#111815] hover:bg-[#16231B] border border-[#24352B] text-xs text-[#C5D0C9] hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
-              >
-                <Mail className="w-3 h-3 text-emerald-400" />
-                <span>Support &amp; Feedback</span>
-              </button>
+            <div className="flex items-center gap-5 pt-1" aria-label="Social media links">
               <a
                 href="https://github.com/akhilalladi-code/claude-code-at-zero-cost"
                 target="_blank"
                 rel="noreferrer"
-                className="px-3 py-1.5 rounded-lg bg-[#111815] hover:bg-[#16231B] border border-[#24352B] text-xs text-[#C5D0C9] hover:text-white transition-colors flex items-center gap-1.5"
+                aria-label="GitHub repository"
+                title="GitHub"
+                className="text-[#777777] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981] rounded-sm"
               >
-                <Github className="w-3 h-3 text-emerald-400" />
-                <span>GitHub Repository</span>
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/akhil-alladi"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn profile"
+                title="LinkedIn"
+                className="text-[#777777] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981] rounded-sm"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://youtube.com/@akhilalladi"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="YouTube channel"
+                title="YouTube"
+                className="text-[#777777] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981] rounded-sm"
+              >
+                <Youtube className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Column 2: Interactive Platform Links (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-[12px] font-mono uppercase tracking-[0.12em] text-[#E5E7EB] font-semibold">
-              Platform &amp; Interactive Labs
-            </h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('home');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
-                  <span>Interactive Homepage &amp; Sandbox</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('docs');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
-                >
-                  <BookOpen className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
-                  <span>24-Chapter Master Handbook</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('projects');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
-                >
-                  <Wrench className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
-                  <span>Interactive Practical Labs (4 Apps)</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('troubleshooting');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
-                >
-                  <AlertTriangle className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
-                  <span>Diagnostic Runbook Wizard (26 Fixes)</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('prompts');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
-                  <span>CCAV Prompt Engineering Library (35)</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('models');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
-                >
-                  <Cpu className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
-                  <span>Cloud &amp; Local Model Matrix</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('commands');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
-                >
-                  <Terminal className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
-                  <span>CLI Slash Commands &amp; Shortcuts</span>
-                </button>
-              </li>
+          {/* Product and platform */}
+          <nav aria-label="Platform">
+            <h3 className={headingClass}>Platform</h3>
+            <ul className="space-y-3.5">
+              <li><button type="button" onClick={() => selectPage('home')} className={linkClass}>Interactive Homepage &amp; Sandbox</button></li>
+              <li><button type="button" onClick={() => selectPage('docs')} className={linkClass}>24-Chapter Master Handbook</button></li>
+              <li><button type="button" onClick={() => selectPage('projects')} className={linkClass}>Interactive Practical Labs</button></li>
+              <li><button type="button" onClick={() => selectPage('troubleshooting')} className={linkClass}>Diagnostic Runbook Wizard</button></li>
+              <li><button type="button" onClick={() => selectPage('prompts')} className={linkClass}>Prompt Engineering Library</button></li>
+              <li><button type="button" onClick={() => selectPage('models')} className={linkClass}>Cloud &amp; Local Model Matrix</button></li>
+              <li><button type="button" onClick={() => selectPage('commands')} className={linkClass}>CLI Commands &amp; Shortcuts</button></li>
             </ul>
-          </div>
+          </nav>
 
-          {/* Column 3: Core Architecture Guides (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-[12px] font-mono uppercase tracking-[0.12em] text-[#E5E7EB] font-semibold">
-              Zero-Cost Architectures
-            </h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onNavigateChapter('chapter-6');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
-                >
-                  <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
-                  <span>Path A: LiteLLM + Google AI Studio</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onNavigateChapter('chapter-7');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
-                >
-                  <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
-                  <span>Path B: 100% Local Ollama (64K Context)</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onNavigateChapter('chapter-8');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
-                >
-                  <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
-                  <span>Path C1: Aider Zero-Proxy Direct CLI</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onNavigateChapter('chapter-9');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
-                >
-                  <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
-                  <span>Path C2: Android Termux Pocket Agent</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onNavigateChapter('chapter-10');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
-                >
-                  <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
-                  <span>Zero-Cost MCP Server Configurations</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onNavigateChapter('chapter-17');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
-                >
-                  <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
-                  <span>Git Worktree Multi-Agent Parallelism</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onNavigateChapter('chapter-19');
-                    scrollToTop();
-                  }}
-                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
-                >
-                  <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
-                  <span>Security &amp; Privacy Hardening</span>
-                </button>
-              </li>
+          {/* Architecture guides */}
+          <nav aria-label="Zero-cost architectures">
+            <h3 className={headingClass}>Architectures</h3>
+            <ul className="space-y-3.5">
+              <li><button type="button" onClick={() => navigateChapter('chapter-6')} className={linkClass}>Path A: LiteLLM + AI Studio</button></li>
+              <li><button type="button" onClick={() => navigateChapter('chapter-7')} className={linkClass}>Path B: Local Ollama</button></li>
+              <li><button type="button" onClick={() => navigateChapter('chapter-8')} className={linkClass}>Path C1: Aider Direct CLI</button></li>
+              <li><button type="button" onClick={() => navigateChapter('chapter-9')} className={linkClass}>Path C2: Android Termux</button></li>
+              <li><button type="button" onClick={() => navigateChapter('chapter-10')} className={linkClass}>MCP Server Configurations</button></li>
+              <li><button type="button" onClick={() => navigateChapter('chapter-17')} className={linkClass}>Git Worktree &amp; Agents</button></li>
+              <li><button type="button" onClick={() => navigateChapter('chapter-19')} className={linkClass}>Security &amp; Privacy</button></li>
             </ul>
-          </div>
+          </nav>
 
-          {/* Column 4: Legal, Privacy, FAQs & Support Links (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-[12px] font-mono uppercase tracking-[0.12em] text-[#E5E7EB] font-semibold">
-              Legal &amp; Support
-            </h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('faqs');
-                    scrollToTop();
-                  }}
-                  className={`transition-colors cursor-pointer flex items-center gap-2 ${
-                    activeTab === 'faqs'
-                      ? 'text-emerald-400 font-semibold'
-                      : 'text-neutral-300 hover:text-emerald-400'
-                  }`}
-                >
-                  <HelpCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>Frequently Asked Questions</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('privacy');
-                    scrollToTop();
-                  }}
-                  className={`transition-colors cursor-pointer flex items-center gap-2 ${
-                    activeTab === 'privacy'
-                      ? 'text-emerald-400 font-semibold'
-                      : 'text-neutral-300 hover:text-emerald-400'
-                  }`}
-                >
-                  <Shield className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>Privacy Policy</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('disclaimer');
-                    scrollToTop();
-                  }}
-                  className={`transition-colors cursor-pointer flex items-center gap-2 ${
-                    activeTab === 'disclaimer'
-                      ? 'text-emerald-400 font-semibold'
-                      : 'text-neutral-300 hover:text-emerald-400'
-                  }`}
-                >
-                  <Scale className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>Legal Disclaimer</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSelectTab('contact');
-                    scrollToTop();
-                  }}
-                  className={`transition-colors cursor-pointer flex items-center gap-2 ${
-                    activeTab === 'contact'
-                      ? 'text-emerald-400 font-semibold'
-                      : 'text-neutral-300 hover:text-emerald-400'
-                  }`}
-                >
-                  <Mail className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>Contact Us</span>
-                </button>
-              </li>
+          {/* Resources and support */}
+          <nav aria-label="Resources and support">
+            <h3 className={headingClass}>Resources</h3>
+            <ul className="space-y-3.5">
+              <li><button type="button" onClick={() => selectPage('faqs')} className={linkClass}>Frequently Asked Questions</button></li>
+              <li><button type="button" onClick={() => selectPage('troubleshooting')} className={linkClass}>Troubleshooting Guide</button></li>
+              <li><button type="button" onClick={() => selectPage('contact')} className={linkClass}>Support &amp; Feedback</button></li>
+              <li><a href="https://github.com/akhilalladi-code/claude-code-at-zero-cost" target="_blank" rel="noreferrer" className={linkClass}>GitHub Repository</a></li>
             </ul>
+          </nav>
 
-            <div className="pt-4 border-t border-[#24352B] space-y-2">
-              <div className="text-xs font-semibold text-[#E5E7EB]">Need setup help?</div>
-              <button
-                type="button"
-                onClick={() => {
-                  onSelectTab('contact');
-                  scrollToTop();
-                }}
-                className="w-full py-2.5 px-3 rounded-lg bg-[#064E3B]/70 hover:bg-[#065F46] border border-emerald-700/60 text-emerald-200 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-950/30 cursor-pointer flex items-center justify-center gap-2"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>Open Support Desk</span>
-              </button>
-            </div>
-          </div>
+          {/* Company and legal */}
+          <nav aria-label="Company and legal">
+            <h3 className={headingClass}>Company</h3>
+            <ul className="space-y-3.5">
+              <li><button type="button" onClick={() => selectPage('contact')} className={linkClass}>About &amp; Contact</button></li>
+              <li><button type="button" onClick={() => selectPage('privacy')} className={linkClass}>Privacy Policy</button></li>
+              <li><button type="button" onClick={() => selectPage('disclaimer')} className={linkClass}>Legal Disclaimer</button></li>
+            </ul>
+          </nav>
         </div>
       </div>
 
-      {/* Bottom Bar: Copyright + Required Links */}
-      <div className="border-t border-[#24352B] bg-[#070B09]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col lg:flex-row items-center justify-between gap-4 text-xs text-[#9CA8A0]">
-          <div className="flex flex-col items-center sm:items-start gap-1 text-center sm:text-left">
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5">
-              <span>Copyright &copy; 2026</span>
-            <span className="font-semibold text-neutral-200">
-              Claude Code at <span className="font-sans">₹</span>0
-            </span>
-              <span>, All Rights Reserved.</span>
-            </div>
-            <span className="text-[11px] text-[#718078]">Built for developers, learners &amp; AI enthusiasts.</span>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-5">
+      {/* Minimal copyright bar */}
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-[1280px] flex-col items-start justify-between gap-4 px-6 py-7 text-xs text-[#777777] sm:flex-row sm:items-center sm:px-8 lg:px-10">
+          <p>
+            © 2026 <span className="font-medium text-[#A3A3A3]">Claude Code at ₹0</span>. All rights reserved.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <button
               type="button"
-              onClick={() => {
-                onSelectTab('faqs');
-                scrollToTop();
-              }}
-              className={`hover:text-white transition-colors cursor-pointer ${
-                activeTab === 'faqs' ? 'text-emerald-400 font-semibold underline underline-offset-4' : ''
-              }`}
+              onClick={() => selectPage('privacy')}
+              className={`transition-colors hover:text-white ${activeTab === 'privacy' ? 'text-[#10B981]' : ''}`}
             >
-              FAQs
+              Privacy
             </button>
-            <span className="text-neutral-700">&bull;</span>
             <button
               type="button"
-              onClick={() => {
-                onSelectTab('privacy');
-                scrollToTop();
-              }}
-              className={`hover:text-white transition-colors cursor-pointer ${
-                activeTab === 'privacy' ? 'text-emerald-400 font-semibold underline underline-offset-4' : ''
-              }`}
+              onClick={() => selectPage('disclaimer')}
+              className={`transition-colors hover:text-white ${activeTab === 'disclaimer' ? 'text-[#10B981]' : ''}`}
             >
-              Privacy Policy
-            </button>
-            <span className="text-neutral-700">&bull;</span>
-            <button
-              type="button"
-              onClick={() => {
-                onSelectTab('disclaimer');
-                scrollToTop();
-              }}
-              className={`hover:text-white transition-colors cursor-pointer ${
-                activeTab === 'disclaimer' ? 'text-emerald-400 font-semibold underline underline-offset-4' : ''
-              }`}
-            >
-              Legal Disclaimer
-            </button>
-            <span className="text-neutral-700">&bull;</span>
-            <button
-              type="button"
-              onClick={() => {
-                onSelectTab('contact');
-                scrollToTop();
-              }}
-              className={`hover:text-white transition-colors cursor-pointer ${
-                activeTab === 'contact' ? 'text-emerald-400 font-semibold underline underline-offset-4' : ''
-              }`}
-            >
-              Contact Us
+              Legal
             </button>
             <button
               type="button"
               onClick={scrollToTop}
-              className="ml-2 px-2.5 py-1 rounded-md bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1 text-[11px]"
-              title="Scroll back to top"
+              className="transition-colors hover:text-white"
+              aria-label="Back to top"
             >
-              <span>Top</span>
-              <ArrowUp className="w-3 h-3" />
+              Back to top ↑
             </button>
           </div>
         </div>
