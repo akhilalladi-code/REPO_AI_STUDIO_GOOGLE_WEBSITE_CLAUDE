@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Home,
   Search,
@@ -40,14 +40,42 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenSearch,
   onToggleMobileMenu,
 }) => {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isMobileNavOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMobileNavOpen(false);
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMobileNavOpen]);
+
+  const mobileLinks: { tab: MainNavTab; label: string }[] = [
+    { tab: 'home', label: 'Home' },
+    { tab: 'docs', label: 'Handbook' },
+    { tab: 'projects', label: 'Interactive Labs' },
+    { tab: 'troubleshooting', label: 'Diagnostics' },
+    { tab: 'prompts', label: 'Prompt Library' },
+    { tab: 'models', label: 'Model Matrix' },
+    { tab: 'commands', label: 'Commands Reference' },
+    { tab: 'faqs', label: 'FAQs' },
+  ];
+
   return (
+    <>
     <header className="sticky top-0 z-40 w-full border-b border-neutral-800 bg-[#101211]/95 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 xl:gap-4">
         {/* Left Brand - Generous gap & divider before Home button */}
         <div className="flex items-center gap-3 shrink-0 mr-2 xl:mr-4 pr-2 xl:pr-4 border-r border-neutral-800/80">
           <button
             type="button"
-            onClick={onToggleMobileMenu}
+            onClick={() => activeTab === 'docs' ? onToggleMobileMenu() : setIsMobileNavOpen(true)}
             className="p-2 -ml-2 rounded-lg text-neutral-400 hover:bg-neutral-800 xl:hidden cursor-pointer shrink-0"
             aria-label="Open site navigation"
           >
@@ -185,5 +213,32 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
     </header>
+    {isMobileNavOpen && (
+      <div className="fixed inset-0 z-50 xl:hidden bg-black/60 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Site navigation" onClick={() => setIsMobileNavOpen(false)}>
+        <nav className="absolute inset-x-0 top-16 max-h-[calc(100vh-4rem)] overflow-y-auto border-b border-emerald-900/60 bg-[#0b1711] p-3 shadow-2xl" onClick={(event) => event.stopPropagation()} aria-label="Mobile site navigation">
+          <div className="mb-2 flex items-center justify-between px-2 py-2">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-400">Explore the handbook</span>
+            <button type="button" onClick={() => setIsMobileNavOpen(false)} className="rounded-lg px-3 py-2 text-xs text-neutral-300 hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">Close</button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+            {mobileLinks.map((item) => (
+              <button
+                key={item.tab}
+                type="button"
+                onClick={() => {
+                  setIsMobileNavOpen(false);
+                  onSelectTab(item.tab);
+                }}
+                className={"flex items-center justify-between rounded-xl px-4 py-3 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 " + (activeTab === item.tab ? "bg-emerald-950/70 text-emerald-300 border border-emerald-700/50" : "text-neutral-200 hover:bg-neutral-900")}
+              >
+                <span>{item.label}</span>
+                <span className="text-emerald-500" aria-hidden="true">→</span>
+              </button>
+            ))}
+          </div>
+        </nav>
+      </div>
+    )}
+    </>
   );
 };
