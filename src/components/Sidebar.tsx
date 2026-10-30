@@ -97,17 +97,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
     },
     {
       name: 'Part II: Setups & Platforms',
-      icon: <Terminal className="w-3.5 h-3.5 text-blue-500" />,
+      icon: <Terminal className="w-3.5 h-3.5 text-emerald-400" />,
       docs: ALL_DOCS.filter((d) => d.part === 'Part II: Setups & Platforms'),
     },
     {
       name: 'Part III: Practical Projects',
-      icon: <Wrench className="w-3.5 h-3.5 text-purple-500" />,
+      icon: <Wrench className="w-3.5 h-3.5 text-teal-400" />,
       docs: ALL_DOCS.filter((d) => d.part === 'Part III: Practical Projects'),
     },
     {
       name: 'Part IV: Engineering Discipline',
-      icon: <Workflow className="w-3.5 h-3.5 text-amber-500" />,
+      icon: <Workflow className="w-3.5 h-3.5 text-lime-400" />,
       docs: ALL_DOCS.filter((d) => d.part === 'Part IV: Engineering Discipline'),
     },
     {
@@ -165,7 +165,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               }}
               className="flex items-center gap-1.5 p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 text-left cursor-pointer"
             >
-              <Wrench className="w-3.5 h-3.5 text-purple-500 shrink-0" />
+              <Wrench className="w-3.5 h-3.5 text-teal-400 shrink-0" />
               <span>Interactive Labs</span>
             </button>
             <button
@@ -176,7 +176,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               }}
               className="flex items-center gap-1.5 p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 text-left cursor-pointer"
             >
-              <AlertTriangle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+              <AlertTriangle className="w-3.5 h-3.5 text-lime-400 shrink-0" />
               <span>Wizard (26)</span>
             </button>
             <button
@@ -187,7 +187,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               }}
               className="flex items-center gap-1.5 p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 text-left cursor-pointer"
             >
-              <Sparkles className="w-3.5 h-3.5 text-purple-500 shrink-0" />
+              <Sparkles className="w-3.5 h-3.5 text-teal-400 shrink-0" />
               <span>Prompts (35)</span>
             </button>
             <button
@@ -198,7 +198,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               }}
               className="flex items-center gap-1.5 p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 text-left cursor-pointer"
             >
-              <Cpu className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+              <Cpu className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
               <span>Models Matrix</span>
             </button>
             <button
@@ -269,7 +269,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                         <div className="flex items-center gap-1 shrink-0 ml-1">
                           {isBookmarked && (
-                            <Bookmark className="w-3 h-3 text-amber-500 fill-amber-500" />
+                            <Bookmark className="w-3 h-3 text-lime-400 fill-amber-500" />
                           )}
                           {isDone && (
                             <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0" />
