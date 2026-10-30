@@ -23,6 +23,7 @@ import {
   Send,
   MessageSquare,
   HelpCircle,
+  Github,
   Lock,
   Server,
   EyeOff,
@@ -59,10 +60,10 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
   };
 
   return (
-    <footer className="w-full border-t border-neutral-800/90 bg-[#0a0c0b] text-neutral-400 mt-16">
+    <footer className="w-full border-t border-emerald-950/80 bg-[#090D0B] text-[#E5E7EB] mt-16">
       {/* Main Multi-Column Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-14 pb-10 sm:pb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-9 lg:gap-10">
           {/* Column 1: Brand Logo + Overview (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <button
@@ -74,20 +75,20 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
               className="flex items-center gap-2.5 text-left cursor-pointer group"
               title="Claude Code at ₹0 Homepage"
             >
-              <div className="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-base shadow-xs group-hover:bg-emerald-500 transition-colors shrink-0 font-sans">
+              <div className="w-10 h-10 rounded-xl bg-[#10B981] text-[#052E20] flex items-center justify-center font-bold text-base shadow-lg shadow-emerald-950/30 group-hover:bg-emerald-300 transition-colors shrink-0 font-sans">
                 ₹0
               </div>
-              <span className="font-bold text-lg text-neutral-100 tracking-tight group-hover:text-emerald-400 transition-colors">
+              <span className="font-bold text-xl text-white tracking-tight group-hover:text-emerald-300 transition-colors">
                 Claude Code at <span className="font-sans">₹</span>0
               </span>
             </button>
 
-            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm">
+            <p className="text-sm text-[#A7B0AA] leading-7 max-w-sm">
               Interactive engineering platform and complete 24-chapter technical reference for running autonomous terminal coding agents at zero API cost using free-tier cloud providers and local open-weight models.
             </p>
 
             {/* Live Architecture Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#121614] border border-emerald-900/50 text-xs text-emerald-300">
+            <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#0D1712] border border-emerald-900/70 text-xs text-emerald-300">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="font-mono text-[11px]">Zero-Cost Stack Verified • v2026.10</span>
             </div>
@@ -100,7 +101,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                   onSelectTab('privacy');
                   scrollToTop();
                 }}
-                className="px-2.5 py-1 rounded-md bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-[11px] text-neutral-300 hover:text-white transition-colors cursor-pointer flex items-center gap-1"
+                className="px-3 py-1.5 rounded-lg bg-[#111815] hover:bg-[#16231B] border border-[#24352B] text-xs text-[#C5D0C9] hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
               >
                 <Shield className="w-3 h-3 text-emerald-400" />
                 <span>Zero-Telemetry</span>
@@ -111,20 +112,29 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                   onSelectTab('contact');
                   scrollToTop();
                 }}
-                className="px-2.5 py-1 rounded-md bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-[11px] text-neutral-300 hover:text-white transition-colors cursor-pointer flex items-center gap-1"
+                className="px-3 py-1.5 rounded-lg bg-[#111815] hover:bg-[#16231B] border border-[#24352B] text-xs text-[#C5D0C9] hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
               >
-                <Mail className="w-3 h-3 text-sky-400" />
+                <Mail className="w-3 h-3 text-emerald-400" />
                 <span>Support &amp; Feedback</span>
               </button>
+              <a
+                href="https://github.com/akhilalladi-code/claude-code-at-zero-cost"
+                target="_blank"
+                rel="noreferrer"
+                className="px-3 py-1.5 rounded-lg bg-[#111815] hover:bg-[#16231B] border border-[#24352B] text-xs text-[#C5D0C9] hover:text-white transition-colors flex items-center gap-1.5"
+              >
+                <Github className="w-3 h-3 text-emerald-400" />
+                <span>GitHub Repository</span>
+              </a>
             </div>
           </div>
 
           {/* Column 2: Interactive Platform Links (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-200 font-semibold">
+            <h3 className="text-[12px] font-mono uppercase tracking-[0.12em] text-[#E5E7EB] font-semibold">
               Platform &amp; Interactive Labs
             </h3>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-3 text-sm">
               <li>
                 <button
                   type="button"
@@ -132,9 +142,9 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onSelectTab('home');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
                 >
-                  <ChevronRight className="w-3 h-3 text-emerald-500/70" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
                   <span>Interactive Homepage &amp; Sandbox</span>
                 </button>
               </li>
@@ -145,9 +155,9 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onSelectTab('docs');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
                 >
-                  <BookOpen className="w-3 h-3 text-emerald-500/70" />
+                  <BookOpen className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
                   <span>24-Chapter Master Handbook</span>
                 </button>
               </li>
@@ -158,9 +168,9 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onSelectTab('projects');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
                 >
-                  <Wrench className="w-3 h-3 text-emerald-500/70" />
+                  <Wrench className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
                   <span>Interactive Practical Labs (4 Apps)</span>
                 </button>
               </li>
@@ -171,9 +181,9 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onSelectTab('troubleshooting');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
                 >
-                  <AlertTriangle className="w-3 h-3 text-emerald-500/70" />
+                  <AlertTriangle className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
                   <span>Diagnostic Runbook Wizard (26 Fixes)</span>
                 </button>
               </li>
@@ -184,9 +194,9 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onSelectTab('prompts');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
                 >
-                  <Sparkles className="w-3 h-3 text-emerald-500/70" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
                   <span>CCAV Prompt Engineering Library (35)</span>
                 </button>
               </li>
@@ -197,9 +207,9 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onSelectTab('models');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
                 >
-                  <Cpu className="w-3 h-3 text-emerald-500/70" />
+                  <Cpu className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
                   <span>Cloud &amp; Local Model Matrix</span>
                 </button>
               </li>
@@ -210,9 +220,9 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onSelectTab('commands');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 leading-6"
                 >
-                  <Terminal className="w-3 h-3 text-emerald-500/70" />
+                  <Terminal className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
                   <span>CLI Slash Commands &amp; Shortcuts</span>
                 </button>
               </li>
@@ -221,10 +231,10 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
 
           {/* Column 3: Core Architecture Guides (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-200 font-semibold">
+            <h3 className="text-[12px] font-mono uppercase tracking-[0.12em] text-[#E5E7EB] font-semibold">
               Zero-Cost Architectures
             </h3>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-3 text-sm">
               <li>
                 <button
                   type="button"
@@ -232,7 +242,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onNavigateChapter('chapter-6');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5 text-left"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
                 >
                   <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
                   <span>Path A: LiteLLM + Google AI Studio</span>
@@ -245,7 +255,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onNavigateChapter('chapter-7');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5 text-left"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
                 >
                   <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
                   <span>Path B: 100% Local Ollama (64K Context)</span>
@@ -258,7 +268,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onNavigateChapter('chapter-8');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5 text-left"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
                 >
                   <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
                   <span>Path C1: Aider Zero-Proxy Direct CLI</span>
@@ -271,7 +281,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onNavigateChapter('chapter-9');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5 text-left"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
                 >
                   <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
                   <span>Path C2: Android Termux Pocket Agent</span>
@@ -284,7 +294,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onNavigateChapter('chapter-10');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5 text-left"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
                 >
                   <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
                   <span>Zero-Cost MCP Server Configurations</span>
@@ -297,7 +307,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onNavigateChapter('chapter-17');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5 text-left"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
                 >
                   <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
                   <span>Git Worktree Multi-Agent Parallelism</span>
@@ -310,7 +320,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                     onNavigateChapter('chapter-19');
                     scrollToTop();
                   }}
-                  className="text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-1.5 text-left"
+                  className="text-[#A7B0AA] hover:text-[#10B981] transition-colors duration-200 cursor-pointer flex items-center gap-2 text-left leading-6"
                 >
                   <ChevronRight className="w-3 h-3 text-emerald-500/70 shrink-0" />
                   <span>Security &amp; Privacy Hardening</span>
@@ -321,10 +331,10 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
 
           {/* Column 4: Legal, Privacy, FAQs & Support Links (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-200 font-semibold">
+            <h3 className="text-[12px] font-mono uppercase tracking-[0.12em] text-[#E5E7EB] font-semibold">
               Legal &amp; Support
             </h3>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-3 text-sm">
               <li>
                 <button
                   type="button"
@@ -372,7 +382,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                       : 'text-neutral-300 hover:text-emerald-400'
                   }`}
                 >
-                  <Scale className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <Scale className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>Legal Disclaimer</span>
                 </button>
               </li>
@@ -389,21 +399,21 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                       : 'text-neutral-300 hover:text-emerald-400'
                   }`}
                 >
-                  <Mail className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                  <Mail className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>Contact Us</span>
                 </button>
               </li>
             </ul>
 
-            <div className="pt-3 border-t border-neutral-800/80 space-y-1.5">
-              <div className="text-[11px] font-medium text-neutral-300">Need Setup Help?</div>
+            <div className="pt-4 border-t border-[#24352B] space-y-2">
+              <div className="text-xs font-semibold text-[#E5E7EB]">Need setup help?</div>
               <button
                 type="button"
                 onClick={() => {
                   onSelectTab('contact');
                   scrollToTop();
                 }}
-                className="w-full py-2 px-3 rounded-lg bg-emerald-950/50 hover:bg-emerald-900/50 border border-emerald-700/50 text-emerald-300 text-xs font-medium transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                className="w-full py-2.5 px-3 rounded-lg bg-[#064E3B]/70 hover:bg-[#065F46] border border-emerald-700/60 text-emerald-200 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-950/30 cursor-pointer flex items-center justify-center gap-2"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
                 <span>Open Support Desk</span>
@@ -414,14 +424,17 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
       </div>
 
       {/* Bottom Bar: Copyright + Required Links */}
-      <div className="border-t border-neutral-800/80 bg-[#070908]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 text-center sm:text-left">
-            <span>Copyright &copy; 2026</span>
+      <div className="border-t border-[#24352B] bg-[#070B09]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col lg:flex-row items-center justify-between gap-4 text-xs text-[#9CA8A0]">
+          <div className="flex flex-col items-center sm:items-start gap-1 text-center sm:text-left">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5">
+              <span>Copyright &copy; 2026</span>
             <span className="font-semibold text-neutral-200">
               Claude Code at <span className="font-sans">₹</span>0
             </span>
-            <span>, All Rights Reserved.</span>
+              <span>, All Rights Reserved.</span>
+            </div>
+            <span className="text-[11px] text-[#718078]">Built for developers, learners &amp; AI enthusiasts.</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-5">
