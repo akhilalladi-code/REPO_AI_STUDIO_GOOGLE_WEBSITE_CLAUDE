@@ -105,7 +105,7 @@ const FormattedParagraph: React.FC<{ text: string }> = ({ text }) => {
 
         // Regular paragraph line
         return (
-          <p key={lIdx} className="leading-relaxed text-neutral-800 dark:text-neutral-200 text-sm sm:text-base">
+          <p key={lIdx} className="leading-7 text-neutral-800 dark:text-neutral-200 text-[15px] sm:text-base">
             {parseInlineMarkdown(line)}
           </p>
         );
@@ -122,12 +122,16 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
   nextChapter,
 }) => {
   const copyHeadingLink = (sectionId: string) => {
-    const url = `${window.location.origin}${window.location.pathname}#${sectionId}`;
-    navigator.clipboard.writeText(url);
+    const url = `${window.location.origin}${window.location.pathname}#${chapter.slug}#${sectionId}`;
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(url).catch(() => window.prompt('Copy this section link:', url));
+    } else {
+      window.prompt('Copy this section link:', url);
+    }
   };
 
   return (
-    <article className="max-w-4xl min-w-0 pb-16 space-y-8">
+    <article className="max-w-4xl min-w-0 pb-16 space-y-8 mx-auto xl:mx-0">
       {/* Top Breadcrumb & Home Navigation Bar */}
       <div>
         <div className="flex flex-wrap items-center justify-between gap-3 text-xs mb-3 pb-3 border-b border-neutral-800">
