@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ALL_DOCS } from '../data/masterHandbook';
 import {
   Home,
@@ -41,6 +41,45 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onCloseMobile,
   onSelectTab,
 }) => {
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpenMobile) return;
+    previousFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const firstFocusable = drawerRef.current?.querySelector<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    firstFocusable?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onCloseMobile();
+        return;
+      }
+      if (event.key !== 'Tab' || !drawerRef.current) return;
+      const focusable = Array.from(drawerRef.current.querySelectorAll<HTMLElement>('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocusRef.current?.focus();
+    };
+  }, [isOpenMobile]);
+
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({
     'Part V: Appendices & Reference': false,
   });
@@ -112,7 +151,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Mobile-Only Main Section Jump Links */}
       {onSelectTab && (
-        <div className="p-2 border-b border-neutral-200 dark:border-neutral-800 lg:hidden space-y-1 bg-neutral-50/80 dark:bg-neutral-900/40">
+        <div className="p-2 border-b border-neutral-200 dark:border-neutral-800 xl:hidden space-y-1 bg-neutral-50/80 dark:bg-neutral-900/40">
           <div className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider px-2 py-1">
             Documentation Modules
           </div>
@@ -251,7 +290,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <>
       {/* Desktop Persistent Left Sidebar */}
-      <aside className="w-72 shrink-0 hidden lg:block border-r border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-[#161817]/70 backdrop-blur-md h-[calc(100vh-4rem)] sticky top-16">
+      <aside className="w-72 shrink-0 hidden xl:block border-r border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-[#161817]/70 backdrop-blur-md h-[calc(100vh-4rem)] sticky top-16">
         {sidebarContent}
       </aside>
 
@@ -260,13 +299,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 lg:hidden flex"
+          className="fixed inset-0 z-50 xl:hidden flex"
         >
           <div
             className="fixed inset-0 bg-black/60 backdrop-blur-xs"
             onClick={onCloseMobile}
           />
-          <div className="relative w-80 max-w-[85vw] h-full bg-white dark:bg-[#161817] shadow-2xl z-10 flex flex-col">
+          <div ref={drawerRef} tabIndex={-1} className="relative w-80 max-w-[85vw] h-full bg-white dark:bg-[#161817] shadow-2xl z-10 flex flex-col">
             <div className="p-3.5 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
               <span className="font-bold text-sm text-neutral-900 dark:text-neutral-100">
                 Navigation &amp; Chapters
@@ -274,7 +313,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <button
                 type="button"
                 onClick={onCloseMobile}
-                className="p-1 rounded-md text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs cursor-pointer"
+                className="p-2 rounded-md text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500" aria-label="Close navigation menu"
               >
                 Close
               </button>
