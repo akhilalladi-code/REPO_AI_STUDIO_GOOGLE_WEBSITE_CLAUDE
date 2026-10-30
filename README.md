@@ -38,8 +38,8 @@ An interactive technical documentation platform for **Claude Code at ₹0: The C
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/akhilalladi-code/REPO_AI_STUDIO_GOOGLE_WEBSITE_CLAUDE.git
-cd REPO_AI_STUDIO_GOOGLE_WEBSITE_CLAUDE
+git clone https://github.com/akhilalladi-code/claude-code-at-zero-cost.git
+cd claude-code-at-zero-cost
 ```
 
 ### 2. Install dependencies
@@ -173,4 +173,4 @@ The source files include Apache License 2.0 SPDX identifiers. Before redistribut
 Created by **Akhil Alladi**.
 
 - GitHub: [@akhilalladi-code](https://github.com/akhilalladi-code)
-- Repository: [REPO_AI_STUDIO_GOOGLE_WEBSITE_CLAUDE](https://github.com/akhilalladi-code/REPO_AI_STUDIO_GOOGLE_WEBSITE_CLAUDE)
+- Repository: [claude-code-at-zero-cost](https://github.com/akhilalladi-code/claude-code-at-zero-cost)
