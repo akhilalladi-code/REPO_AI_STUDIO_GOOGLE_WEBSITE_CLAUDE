@@ -27,12 +27,41 @@ const HighlightedText: React.FC<{ text: string; query: string }> = ({ text, quer
 
   const escaped = tokens.map((t) => t.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|');
   const regex = new RegExp(`(${escaped})`, 'gi');
+  const exactMatch = new RegExp(`^(?:${escaped})/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { useState, useEffect, useRef } from 'react';
+import { Search, X, BookOpen, AlertTriangle, Terminal, Sparkles, FileText, ArrowRight, Loader2 } from 'lucide-react';
+import { SearchEngine, SearchResult } from '../lib/searchEngine';
+import { buildSearchIndex } from '../data/masterHandbook';
+
+interface SearchModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onNavigate: (route: string, anchor?: string) => void;
+}
+
+/**
+ * Renders text with query term matches visually highlighted via <mark> tags
+ */
+const HighlightedText: React.FC<{ text: string; query: string }> = ({ text, query }) => {
+  if (!query.trim()) return <>{text}</>;
+  const tokens = query
+    .trim()
+    .split(/\s+/)
+    .filter((t) => t.length > 1);
+  if (tokens.length === 0) return <>{text}</>;
+
+  const escaped = tokens.map((t) => t.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|');
+  , 'i');
   const parts = text.split(regex);
 
   return (
     <>
       {parts.map((part, i) =>
-        regex.test(part) ? (
+        exactMatch.test(part) ? (
           <mark
             key={i}
             className="bg-emerald-200/90 dark:bg-emerald-800/80 text-emerald-950 dark:text-emerald-100 font-semibold rounded-xs px-0.5"
@@ -70,16 +99,26 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     }
   }, []);
 
-  // Modal open focus & reset
+  // Keep keyboard focus and background scrolling inside the search dialog.
   useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 60);
-    } else {
+    if (!isOpen) {
       setInputVal('');
       setDebouncedQuery('');
       setResults([]);
       setSelectedIndex(0);
+      return;
     }
+
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const focusTimer = window.setTimeout(() => inputRef.current?.focus(), 60);
+
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
   }, [isOpen]);
 
   // Debounce input to optimize CPU during rapid typing
@@ -120,6 +159,16 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Tab') {
+      const focusable = Array.from(e.currentTarget.querySelectorAll<HTMLElement>('input:not([disabled]), button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'));
+      if (focusable.length) {
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+      return;
+    }
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       setSelectedIndex((prev) => (prev < results.length - 1 ? prev + 1 : prev));
